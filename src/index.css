@@ -116,6 +116,15 @@ body {
   margin-bottom: 40px;
 }
 
+.hero-controls {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -127,6 +136,44 @@ body {
   color: var(--accent);
   font-size: 15px;
   font-weight: 700;
+  box-shadow: var(--shadow-soft);
+}
+
+.language-switcher {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.language-switcher-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.language-switcher-option.is-active {
+  background: var(--accent);
+  color: var(--accent-contrast);
   box-shadow: var(--shadow-soft);
 }
 
@@ -943,6 +990,10 @@ body {
     margin-bottom: 28px;
   }
 
+  .hero-controls {
+    gap: 8px;
+  }
+
   .hero-layout {
     gap: 32px;
   }
@@ -1003,6 +1054,18 @@ body {
     min-height: 28px;
     padding: 0 10px;
     font-size: 12px;
+  }
+
+  .language-switcher {
+    min-height: 40px;
+    padding: 4px;
+  }
+
+  .language-switcher-option {
+    min-width: 38px;
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 11px;
   }
 
   .cta-card {
@@ -1069,26 +1132,39 @@ body {
   }
 
   .hero-topbar {
-  gap: 10px;
-}
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-.hero-badge {
-  min-height: 40px;
-  padding: 0 14px;
-  font-size: 14px;
-}
+  .hero-badge {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
 
-.theme-toggle {
-  align-self: flex-start;
-}
+  .hero-controls {
+    display: grid;
+    justify-items: end;
+    gap: 8px;
+  }
 
-.cta-card {
-  padding: 20px 16px;
-  border-radius: 22px;
-}
+  .language-switcher,
+  .theme-toggle {
+    align-self: flex-start;
+  }
 
-.cta-card .button {
-  min-height: 48px;
-}
+  .theme-toggle-option {
+    min-width: 56px;
+    padding: 0 8px;
+  }
+
+  .cta-card {
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .cta-card .button {
+    min-height: 48px;
+  }
 
 }
