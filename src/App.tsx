@@ -17,6 +17,7 @@ type MockEventCardProps = {
   location: string
   author: string
   participants: string
+  badge: string
 }
 
 function MockEventCard({
@@ -26,11 +27,15 @@ function MockEventCard({
   location,
   author,
   participants,
+  badge,
 }: MockEventCardProps) {
   return (
     <article className="mock-event-card">
+      <div className="mock-event-card-top">
+        <span className="mock-chip">{category}</span>
+        <span className="mock-badge">{badge}</span>
+      </div>
       <h4>{title}</h4>
-      <span className="mock-chip">{category}</span>
       <p>{date}</p>
       <p>{location}</p>
       <div className="mock-event-meta">
@@ -49,8 +54,11 @@ function MockScreenDiscover({ locale }: { locale: Locale }) {
       <div className="phone-statusbar" />
       <div className="phone-header">
         <span className="phone-brand">Gathr</span>
+        <span className="phone-city-pill">{t.cityPill}</span>
         <div className="phone-header-actions">
-          <span className="phone-circle" />
+          <span className="phone-circle">
+            <span className="phone-notification-badge">{t.notificationBadge}</span>
+          </span>
           <span className="phone-avatar">AB</span>
         </div>
       </div>
@@ -67,6 +75,10 @@ function MockScreenDiscover({ locale }: { locale: Locale }) {
           <span className="mock-pill">{t.filters[1]}</span>
           <span className="mock-pill">{t.filters[2]}</span>
           <span className="mock-pill">{t.filters[3]}</span>
+        </div>
+
+        <div className="mock-search-row">
+          <span>{t.searchLabel}</span>
         </div>
 
         <div className="mock-select">
@@ -102,7 +114,10 @@ function MockScreenDetails({ locale }: { locale: Locale }) {
       <div className="phone-top-link">← {t.back}</div>
 
       <div className="phone-content phone-content-tight">
-        <h3 className="phone-screen-title">{t.title}</h3>
+        <div className="phone-title-row">
+          <h3 className="phone-screen-title">{t.title}</h3>
+          <span className="mock-badge">{t.badge}</span>
+        </div>
         <p className="phone-screen-text">{t.text}</p>
 
         <div className="mock-detail-item">
@@ -122,6 +137,14 @@ function MockScreenDetails({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mock-map">{t.mapLabel}</div>
+
+        <div className="mock-contact-block">
+          <span>{t.contactsLabel}</span>
+          <div className="mock-filter-row">
+            <span className="mock-pill">{t.contacts[0]}</span>
+            <span className="mock-pill">{t.contacts[1]}</span>
+          </div>
+        </div>
 
         <div className="mock-participants">
           <span>{t.participantsLabel}</span>
@@ -181,6 +204,23 @@ function MockScreenCreate({ locale }: { locale: Locale }) {
 
         <div className="mock-inline-fields">
           <div className="mock-input-group">
+            <label>{t.visibilityLabel}</label>
+            <div className="mock-segmented">
+              <span className="is-active">{t.visibilityOptions[0]}</span>
+              <span>{t.visibilityOptions[1]}</span>
+            </div>
+          </div>
+          <div className="mock-input-group">
+            <label>{t.joinModeLabel}</label>
+            <div className="mock-segmented">
+              <span>{t.joinModeOptions[0]}</span>
+              <span className="is-active">{t.joinModeOptions[1]}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mock-inline-fields">
+          <div className="mock-input-group">
             <label>{t.dateLabel}</label>
             <div className="mock-input">{t.dateValue}</div>
           </div>
@@ -225,10 +265,18 @@ function MockScreenNotifications({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mock-notification-card">
-          <div className="mock-notification-icon">📌</div>
+          <div className="mock-notification-icon">⏱</div>
           <div className="mock-notification-copy">
             <strong>{t.items[1].text}</strong>
             <span>{t.items[1].time}</span>
+          </div>
+        </div>
+
+        <div className="mock-notification-card">
+          <div className="mock-notification-icon">✉</div>
+          <div className="mock-notification-copy">
+            <strong>{t.items[2].text}</strong>
+            <span>{t.items[2].time}</span>
           </div>
         </div>
       </div>

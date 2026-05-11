@@ -7,6 +7,7 @@ type MockEventCardTranslation = {
   location: string
   author: string
   participants: string
+  badge: string
 }
 
 type Translation = {
@@ -85,8 +86,11 @@ type Translation = {
   }
   mock: {
     discover: {
+      cityPill: string
+      notificationBadge: string
       tabs: [string, string, string]
       filters: [string, string, string, string]
+      searchLabel: string
       cityLabel: string
       cityValue: string
       cards: [MockEventCardTranslation, MockEventCardTranslation]
@@ -96,6 +100,7 @@ type Translation = {
     details: {
       back: string
       title: string
+      badge: string
       text: string
       dateLabel: string
       dateValue: string
@@ -103,6 +108,8 @@ type Translation = {
       locationValue: string
       mapLabel: string
       participantsLabel: string
+      contactsLabel: string
+      contacts: [string, string]
       share: string
       join: string
     }
@@ -115,6 +122,10 @@ type Translation = {
       activityTypes: [string, string, string, string]
       descriptionLabel: string
       descriptionPlaceholder: string
+      visibilityLabel: string
+      visibilityOptions: [string, string]
+      joinModeLabel: string
+      joinModeOptions: [string, string]
       dateLabel: string
       dateValue: string
       timeLabel: string
@@ -127,6 +138,7 @@ type Translation = {
     notifications: {
       title: string
       items: [
+        { text: string; time: string },
         { text: string; time: string },
         { text: string; time: string },
       ]
@@ -297,8 +309,11 @@ export const translations: Record<Locale, Translation> = {
     },
     mock: {
       discover: {
+        cityPill: 'All cities',
+        notificationBadge: '4',
         tabs: ['Discover', 'Joined', 'My events'],
         filters: ['All', 'Sports', 'Coffee', 'Tech'],
+        searchLabel: 'Search',
         cityLabel: 'City',
         cityValue: 'All cities',
         cards: [
@@ -309,6 +324,7 @@ export const translations: Record<Locale, Translation> = {
             location: 'City center',
             author: 'Created by Maria',
             participants: '4 joined',
+            badge: 'Open',
           },
           {
             title: 'Saturday football',
@@ -317,6 +333,7 @@ export const translations: Record<Locale, Translation> = {
             location: 'Central field',
             author: 'Created by Alex',
             participants: '9 joined',
+            badge: 'Request',
           },
         ],
         createAriaLabel: 'Create event',
@@ -325,6 +342,7 @@ export const translations: Record<Locale, Translation> = {
       details: {
         back: 'Back',
         title: 'Coffee and introductions',
+        badge: 'Request to join',
         text:
           'A small meetup in the city center. Come by for coffee, meet new people, and keep the plan in one clear place.',
         dateLabel: 'Date and time',
@@ -333,8 +351,10 @@ export const translations: Record<Locale, Translation> = {
         locationValue: 'Chisinau, center',
         mapLabel: 'Event map',
         participantsLabel: 'Participants (4)',
+        contactsLabel: 'Contact options',
+        contacts: ['Telegram', 'Instagram'],
         share: 'Share',
-        join: 'Join',
+        join: 'Request',
       },
       create: {
         cancel: 'Cancel',
@@ -345,6 +365,10 @@ export const translations: Record<Locale, Translation> = {
         activityTypes: ['Sports', 'Social', 'Tech', 'Other'],
         descriptionLabel: 'Description',
         descriptionPlaceholder: 'Describe the meetup and who it is for...',
+        visibilityLabel: 'Visibility',
+        visibilityOptions: ['Public', 'Private'],
+        joinModeLabel: 'Join mode',
+        joinModeOptions: ['Open', 'Request'],
         dateLabel: 'Date',
         dateValue: '24.05.2026',
         timeLabel: 'Time',
@@ -364,6 +388,10 @@ export const translations: Record<Locale, Translation> = {
           {
             text: 'Coffee after work starts tomorrow',
             time: 'Today',
+          },
+          {
+            text: 'Maria invited you to Saturday football',
+            time: 'Yesterday',
           },
         ],
         bottomNav: ['Home', 'Alerts', 'Profile'],
@@ -527,8 +555,11 @@ export const translations: Record<Locale, Translation> = {
     },
     mock: {
       discover: {
+        cityPill: 'Все города',
+        notificationBadge: '4',
         tabs: ['Обзор', 'Участвую', 'Мои'],
         filters: ['Все', 'Спорт', 'Кофе', 'Tech'],
+        searchLabel: 'Поиск',
         cityLabel: 'Город',
         cityValue: 'Все города',
         cards: [
@@ -539,6 +570,7 @@ export const translations: Record<Locale, Translation> = {
             location: 'Центр города',
             author: 'Создала Maria',
             participants: '4 участвуют',
+            badge: 'Открыто',
           },
           {
             title: 'Футбол в субботу',
@@ -547,6 +579,7 @@ export const translations: Record<Locale, Translation> = {
             location: 'Центральное поле',
             author: 'Создал Alex',
             participants: '9 участвуют',
+            badge: 'Заявка',
           },
         ],
         createAriaLabel: 'Создать событие',
@@ -555,6 +588,7 @@ export const translations: Record<Locale, Translation> = {
       details: {
         back: 'Назад',
         title: 'Кофе и знакомства',
+        badge: 'Вход по заявке',
         text:
           'Небольшая встреча в центре города. Можно зайти на кофе, познакомиться с людьми и держать весь план в одном месте.',
         dateLabel: 'Дата и время',
@@ -563,8 +597,10 @@ export const translations: Record<Locale, Translation> = {
         locationValue: 'Кишинев, центр',
         mapLabel: 'Карта события',
         participantsLabel: 'Участники (4)',
+        contactsLabel: 'Контакты',
+        contacts: ['Telegram', 'Instagram'],
         share: 'Поделиться',
-        join: 'Присоединиться',
+        join: 'Отправить заявку',
       },
       create: {
         cancel: 'Отмена',
@@ -575,6 +611,10 @@ export const translations: Record<Locale, Translation> = {
         activityTypes: ['Спорт', 'Общение', 'Tech', 'Другое'],
         descriptionLabel: 'Описание',
         descriptionPlaceholder: 'Опиши встречу и для кого она...',
+        visibilityLabel: 'Видимость',
+        visibilityOptions: ['Публичное', 'Закрытое'],
+        joinModeLabel: 'Вступление',
+        joinModeOptions: ['Сразу', 'По заявке'],
         dateLabel: 'Дата',
         dateValue: '24.05.2026',
         timeLabel: 'Время',
@@ -594,6 +634,10 @@ export const translations: Record<Locale, Translation> = {
           {
             text: 'Кофе после работы начнется завтра',
             time: 'Сегодня',
+          },
+          {
+            text: 'Maria пригласила тебя на футбол в субботу',
+            time: 'Вчера',
           },
         ],
         bottomNav: ['Главная', 'Уведомления', 'Профиль'],
@@ -757,8 +801,11 @@ export const translations: Record<Locale, Translation> = {
     },
     mock: {
       discover: {
+        cityPill: 'Toate orașele',
+        notificationBadge: '4',
         tabs: ['Descoperă', 'Particip', 'Ale mele'],
         filters: ['Toate', 'Sport', 'Cafea', 'Tech'],
+        searchLabel: 'Caută',
         cityLabel: 'Oraș',
         cityValue: 'Toate orașele',
         cards: [
@@ -769,6 +816,7 @@ export const translations: Record<Locale, Translation> = {
             location: 'Centrul orașului',
             author: 'Creat de Maria',
             participants: '4 participă',
+            badge: 'Deschis',
           },
           {
             title: 'Fotbal sâmbătă',
@@ -777,6 +825,7 @@ export const translations: Record<Locale, Translation> = {
             location: 'Terenul central',
             author: 'Creat de Alex',
             participants: '9 participă',
+            badge: 'Cerere',
           },
         ],
         createAriaLabel: 'Creează eveniment',
@@ -785,6 +834,7 @@ export const translations: Record<Locale, Translation> = {
       details: {
         back: 'Înapoi',
         title: 'Cafea și cunoaștere',
+        badge: 'Acces cu cerere',
         text:
           'O întâlnire mică în centrul orașului. Vino la o cafea, cunoaște oameni noi și păstrează planul clar.',
         dateLabel: 'Data și ora',
@@ -793,8 +843,10 @@ export const translations: Record<Locale, Translation> = {
         locationValue: 'Chișinău, centru',
         mapLabel: 'Harta evenimentului',
         participantsLabel: 'Participanți (4)',
+        contactsLabel: 'Contacte',
+        contacts: ['Telegram', 'Instagram'],
         share: 'Distribuie',
-        join: 'Participă',
+        join: 'Cere acces',
       },
       create: {
         cancel: 'Anulează',
@@ -805,6 +857,10 @@ export const translations: Record<Locale, Translation> = {
         activityTypes: ['Sport', 'Social', 'Tech', 'Altceva'],
         descriptionLabel: 'Descriere',
         descriptionPlaceholder: 'Descrie întâlnirea și pentru cine este...',
+        visibilityLabel: 'Vizibilitate',
+        visibilityOptions: ['Public', 'Privat'],
+        joinModeLabel: 'Mod de participare',
+        joinModeOptions: ['Direct', 'Cu cerere'],
         dateLabel: 'Data',
         dateValue: '24.05.2026',
         timeLabel: 'Ora',
@@ -824,6 +880,10 @@ export const translations: Record<Locale, Translation> = {
           {
             text: 'Cafea după muncă începe mâine',
             time: 'Azi',
+          },
+          {
+            text: 'Maria te-a invitat la fotbal sâmbătă',
+            time: 'Ieri',
           },
         ],
         bottomNav: ['Acasă', 'Alerte', 'Profil'],

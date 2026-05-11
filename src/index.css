@@ -624,6 +624,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   padding: 14px 22px 16px;
   border-bottom: 1px solid rgba(212, 169, 43, 0.12);
 }
@@ -631,6 +632,21 @@ body {
 .phone-brand {
   color: #d4a92b;
   font-size: 24px;
+  font-weight: 700;
+}
+
+.phone-city-pill {
+  min-width: 0;
+  max-width: 126px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid rgba(212, 169, 43, 0.18);
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: #d4a92b;
+  background: rgba(212, 169, 43, 0.08);
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -642,11 +658,29 @@ body {
 
 .phone-circle,
 .phone-avatar {
+  position: relative;
   width: 42px;
   height: 42px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.16);
   border: 1px solid rgba(212, 169, 43, 0.28);
+}
+
+.phone-notification-badge {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  border-radius: 999px;
+  border: 2px solid #070707;
+  background: #d4a92b;
+  color: #120f05;
+  font-size: 10px;
+  font-weight: 800;
 }
 
 .phone-avatar {
@@ -713,6 +747,18 @@ body {
   color: #f7f1e5;
 }
 
+.phone-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.phone-title-row .phone-screen-title {
+  margin-bottom: 0;
+}
+
 .phone-screen-text {
   margin: 0 0 18px;
   color: #b6aa8c;
@@ -732,6 +778,17 @@ body {
   border-radius: 18px;
   border: 1px solid rgba(212, 169, 43, 0.12);
   background: rgba(255, 255, 255, 0.045);
+}
+
+.mock-search-row {
+  margin-top: 12px;
+  border: 1px solid rgba(212, 169, 43, 0.12);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #8f8164;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .mock-select-label {
@@ -762,6 +819,14 @@ body {
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.24);
 }
 
+.mock-event-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
 .mock-event-card h4 {
   margin: 0 0 12px;
   font-size: 18px;
@@ -776,8 +841,18 @@ body {
   line-height: 1.5;
 }
 
-.mock-chip {
-  margin-bottom: 12px;
+.mock-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 169, 43, 0.24);
+  background: rgba(212, 169, 43, 0.08);
+  color: #d4a92b;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
 }
 
 .mock-event-meta {
@@ -874,6 +949,17 @@ body {
   margin-top: 18px;
 }
 
+.mock-contact-block {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.mock-contact-block>span {
+  color: #b5a98a;
+  font-size: 14px;
+}
+
 .mock-participants>span {
   display: block;
   margin-bottom: 12px;
@@ -960,6 +1046,33 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+
+.mock-segmented {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  min-height: 42px;
+  padding: 4px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 169, 43, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mock-segmented span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: #9f9274;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.mock-segmented span.is-active {
+  background: #d4a92b;
+  color: #120f05;
 }
 
 .mock-notification-card {
@@ -1161,6 +1274,10 @@ body {
 
   .phone-content {
     padding: 16px 12px 24px;
+  }
+
+  .phone-city-pill {
+    max-width: 102px;
   }
 
   .phone-tabs {
