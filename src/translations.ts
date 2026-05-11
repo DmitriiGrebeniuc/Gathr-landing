@@ -38,6 +38,17 @@ type Translation = {
         text: string
       }>
     }
+    plans: {
+      eyebrow: string
+      title: string
+      text: string
+      tiers: Array<{
+        name: string
+        label: string
+        text: string
+        items: string[]
+      }>
+    }
     comparison: {
       eyebrow: string
       title: string
@@ -137,109 +148,147 @@ export const translations: Record<Locale, Translation> = {
       light: 'Light',
     },
     hero: {
-      title: 'A simple way to bring people together for real-life meetups',
+      title: 'A clearer home for real-life plans',
       description:
-        'Gathr helps you create local events, find participants, share links, and keep plans from getting lost in chat noise.',
-      primaryCta: 'Open the app',
-      secondaryCta: 'How it works',
+        'Gathr helps people find local meetups, create their own events, invite others, and keep the important details out of chat chaos.',
+      primaryCta: 'Open Gathr',
+      secondaryCta: 'See the flow',
     },
     sections: {
       why: {
         eyebrow: 'Why Gathr',
-        title: 'When meetups live only in chat, the important details disappear fast',
+        title: 'Chats are good for talking. They are messy for organizing.',
         text:
-          'Who is coming, where the meetup is, what time it starts, whether it is still happening, and whether there are spots left all quickly get buried in messages. Gathr keeps that information in one clear place.',
-        cardTitle: 'What changes',
+          'Time, place, participants, updates, invitations, and join requests all get scattered across messages. Gathr gives each meetup one structured place, so people can understand what is happening without scrolling through the whole chat.',
+        cardTitle: 'What becomes clearer',
         items: [
-          'every meetup gets its own event card',
-          'date, place, and description stay visible',
-          'it is clear who is already joining',
-          'the event is easy to share with a link',
+          'one event page instead of scattered messages',
+          'time, place, map, and description stay visible',
+          'participants, invitations, and requests are easier to manage',
+          'updates and reminders are not lost in the conversation',
         ],
       },
       features: {
-        eyebrow: 'What you can do',
-        title: 'Core features',
+        eyebrow: 'What exists now',
+        title: 'Built around the real event flow',
         items: [
           {
-            title: 'Create events',
-            text: 'Set the meetup format, description, location, and key details on one clear screen.',
+            title: 'Discover nearby events',
+            text: 'Browse local meetups, filter by activity and city, and open the events that fit your plans.',
           },
           {
-            title: 'Discover events',
-            text: 'See what is already happening nearby and join what fits your plans.',
+            title: 'Create and edit events',
+            text: 'Add a title, description, activity type, time, location, map point, visibility, join mode, and contact options.',
           },
           {
-            title: 'Track participants',
-            text: 'Each event has a clear participant list, so it is easy to see who is already in.',
+            title: 'Join, request, or invite',
+            text: 'Open events can be joined directly. Request-based events let organizers review who wants to come.',
           },
           {
-            title: 'Invite and share',
-            text: 'Invite people directly or just send a link to the event.',
+            title: 'Participant clarity',
+            text: 'Organizers and allowed participants can see who is in, while private details stay protected by access rules.',
+          },
+          {
+            title: 'Notifications and settings',
+            text: 'Gathr shows upcoming events, new participants, invitations, join requests, and lets users tune notification settings.',
+          },
+          {
+            title: 'Profiles and support',
+            text: 'Users can manage profile, language, appearance, security, support requests, and their current plan status.',
+          },
+        ],
+      },
+      plans: {
+        eyebrow: 'Freemium model',
+        title: 'Free for simple meetups, Pro for active organizers',
+        text:
+          'The product already has a free/pro access model in the app. The goal is not to push upgrades early, but to give active organizers more room and better controls when they need them.',
+        tiers: [
+          {
+            name: 'Free',
+            label: 'For casual plans',
+            text: 'A practical starting point for people who create or join occasional meetups.',
+            items: [
+              'up to 3 active future events',
+              'up to 10 invitations per event',
+              'public events and core join flow',
+            ],
+          },
+          {
+            name: 'Pro',
+            label: 'For organizers',
+            text: 'Designed for people who host more often and need more capacity and control.',
+            items: [
+              'up to 20 active future events',
+              'up to 100 invitations per event',
+              'a path toward private events and organizer tools',
+            ],
           },
         ],
       },
       comparison: {
         eyebrow: 'Why not just chat',
-        title: 'Chat is great for conversation, but not for running the meetup itself',
+        title: 'Gathr does not replace conversation. It keeps the plan stable.',
         text:
-          'Messages scroll away, details get lost, the attendee list changes, and at some point it is no longer obvious what is still current. Gathr is not a replacement for communication. It gives the meetup a structured home.',
-        chatLabel: 'Regular chat',
+          'A chat is still useful before and after the meetup. Gathr is the structured layer around it: event details, participant state, invitations, requests, and updates in one place.',
+        chatLabel: 'Only chat',
         gathrLabel: 'Gathr',
         chatItems: [
-          'details get lost quickly',
-          'it is hard to tell who is actually coming',
-          'there is no single event entry point',
+          'details scroll away',
+          'it is hard to know who is actually coming',
+          'updates and decisions are mixed with conversation',
         ],
         gathrItems: [
-          'each meetup has its own dedicated card',
-          'the participant list is visible',
-          'sharing the details by link is easy',
+          'each meetup has a dedicated event page',
+          'join state, invitations, and requests are visible',
+          'the event can be shared and reopened later',
         ],
       },
       howItWorks: {
         eyebrow: 'How it works',
         title: 'The main flow at a glance',
         text:
-          'In the app, you can quickly find an event, open its details, join it, or create your own. Below is a walkthrough of the main screens with sample data.',
+          'Gathr is built around the simple loop of discovering, opening, joining, creating, and keeping track of events.',
         steps: [
           {
-            title: '1. Find an event',
-            text: 'Browse active meetups, filter by interests and city, and open the ones that match you.',
+            title: '1. Find a meetup',
+            text: 'Browse events by city, activity, and status. Joined and created events stay easy to return to.',
           },
           {
-            title: '2. Open the details',
-            text: 'Inside the event you can see the description, time, place, participants, and key actions.',
+            title: '2. Check the details',
+            text: 'See the description, time, place, map, participants, contact options, and whether joining is open or request-based.',
           },
           {
-            title: '3. Create your own',
-            text: 'Fill out a short form, choose the format, time, and location, then share the link.',
+            title: '3. Create or invite',
+            text: 'Set up your own event, choose the access mode, add location details, and invite people directly or by link.',
           },
           {
             title: '4. Stay updated',
-            text: 'Notifications help you keep up with new participants and important meetup changes.',
+            text: 'Notifications cover upcoming events, new participants, invitations, and pending join requests.',
           },
         ],
       },
       useCases: {
         eyebrow: 'Use cases',
-        title: 'What kinds of meetups it fits',
+        title: 'For small, real meetups that need a little structure',
         text:
-          'Football, coffee, walks, board games, local community meetups, small events, familiar groups, and team gatherings.',
+          'Gathr fits everyday plans, local communities, small organizer-led events, company gatherings, and groups that need more than a message thread.',
         chips: [
-          'Football',
           'Coffee',
           'Walks',
+          'Sports',
           'Board games',
-          'Networking',
+          'Community meetups',
           'Team outings',
-          'Local meetups',
+          'Private groups',
+          'Small events',
         ],
       },
       cta: {
         eyebrow: 'Try it',
-        title: 'Open Gathr and see how it works in practice',
-        text: 'The project is currently in the MVP stage and is gradually welcoming its first users.',
+        title: 'Open Gathr and make the next plan easier to follow',
+        text:
+          'The product is still evolving, but the core flow is already there: create, share, join, request, invite, and keep the details in one place.',
         button: 'Go to the app',
       },
     },
@@ -248,26 +297,26 @@ export const translations: Record<Locale, Translation> = {
     },
     mock: {
       discover: {
-        tabs: ['Events', 'Joining', 'My events'],
-        filters: ['All', 'Sports', 'Networking', 'Food'],
+        tabs: ['Discover', 'Joined', 'My events'],
+        filters: ['All', 'Sports', 'Coffee', 'Tech'],
         cityLabel: 'City',
         cityValue: 'All cities',
         cards: [
           {
-            title: 'Morning walk',
-            category: 'Outdoors',
-            date: '18.04.2026, 09:00',
-            location: 'Central Park, Chisinau',
-            author: 'Created by Alex',
-            participants: '6 participants',
-          },
-          {
             title: 'Coffee after work',
-            category: 'Networking',
-            date: '19.04.2026, 19:30',
+            category: 'Social',
+            date: '19.05.2026, 19:30',
             location: 'City center',
             author: 'Created by Maria',
-            participants: '4 participants',
+            participants: '4 joined',
+          },
+          {
+            title: 'Saturday football',
+            category: 'Sports',
+            date: '23.05.2026, 10:00',
+            location: 'Central field',
+            author: 'Created by Alex',
+            participants: '9 joined',
           },
         ],
         createAriaLabel: 'Create event',
@@ -277,9 +326,9 @@ export const translations: Record<Locale, Translation> = {
         back: 'Back',
         title: 'Coffee and introductions',
         text:
-          'A small meetup in the city center. Come by for coffee, meet new people, and have a relaxed conversation.',
+          'A small meetup in the city center. Come by for coffee, meet new people, and keep the plan in one clear place.',
         dateLabel: 'Date and time',
-        dateValue: '19.04.2026, 19:30',
+        dateValue: '19.05.2026, 19:30',
         locationLabel: 'Location',
         locationValue: 'Chisinau, center',
         mapLabel: 'Event map',
@@ -293,11 +342,11 @@ export const translations: Record<Locale, Translation> = {
         eventNameLabel: 'Event name',
         eventNamePlaceholder: 'What are you planning?',
         activityTypeLabel: 'Activity type',
-        activityTypes: ['Sports', 'Networking', 'Food', 'Other'],
+        activityTypes: ['Sports', 'Social', 'Tech', 'Other'],
         descriptionLabel: 'Description',
-        descriptionPlaceholder: 'Briefly describe the meetup idea...',
+        descriptionPlaceholder: 'Describe the meetup and who it is for...',
         dateLabel: 'Date',
-        dateValue: '20.04.2026',
+        dateValue: '24.05.2026',
         timeLabel: 'Time',
         timeValue: '18:30',
         locationLabel: 'Location',
@@ -309,12 +358,12 @@ export const translations: Record<Locale, Translation> = {
         title: 'Notifications',
         items: [
           {
-            text: 'Alex, Maria, and 2 more people joined the event',
-            time: '2 hours ago',
+            text: 'Nina requested to join your event',
+            time: '12 min ago',
           },
           {
-            text: 'The organizer updated the meetup location',
-            time: 'Yesterday',
+            text: 'Coffee after work starts tomorrow',
+            time: 'Today',
           },
         ],
         bottomNav: ['Home', 'Alerts', 'Profile'],
@@ -325,113 +374,151 @@ export const translations: Record<Locale, Translation> = {
     meta: {
       languageLabel: 'Язык',
       themeToggleLabel: 'Переключить тему',
-      dark: 'Тёмная',
+      dark: 'Темная',
       light: 'Светлая',
     },
     hero: {
-      title: 'Простой способ собирать людей на реальные встречи',
+      title: 'Понятное место для живых планов',
       description:
-        'Gathr помогает создавать локальные события, находить участников, делиться ссылками и не теряться в хаосе чатов.',
-      primaryCta: 'Открыть приложение',
-      secondaryCta: 'Как это работает',
+        'Gathr помогает находить локальные встречи, создавать свои события, приглашать людей и не терять важные детали в шуме чатов.',
+      primaryCta: 'Открыть Gathr',
+      secondaryCta: 'Посмотреть сценарий',
     },
     sections: {
       why: {
-        eyebrow: 'Зачем нужен Gathr',
-        title: 'Когда встречи живут только в чатах, всё быстро теряется',
+        eyebrow: 'Зачем Gathr',
+        title: 'Чат удобен для общения. Но плохо держит сам план.',
         text:
-          'Кто идёт, где встреча, во сколько начало, актуально ли событие, есть ли ещё места - вся эта информация быстро расползается по сообщениям. Gathr собирает её в одном понятном месте.',
-        cardTitle: 'Что меняется',
+          'Время, место, участники, обновления, приглашения и заявки быстро расползаются по сообщениям. Gathr дает каждой встрече отдельное понятное место, чтобы не искать детали в длинной переписке.',
+        cardTitle: 'Что становится понятнее',
         items: [
-          'есть отдельная карточка события',
-          'видны дата, место и описание',
-          'понятно, кто уже идёт',
-          'событием легко поделиться по ссылке',
+          'у встречи есть отдельная страница, а не набор сообщений',
+          'время, место, карта и описание остаются на виду',
+          'участников, приглашения и заявки проще контролировать',
+          'обновления и напоминания не теряются в разговоре',
         ],
       },
       features: {
-        eyebrow: 'Что можно делать',
-        title: 'Основные возможности',
+        eyebrow: 'Что уже есть',
+        title: 'Возможности вокруг реального сценария встречи',
         items: [
           {
-            title: 'Создавать события',
-            text: 'Указывай формат встречи, описание, место и другие детали в одном понятном экране.',
+            title: 'Поиск событий рядом',
+            text: 'Можно смотреть локальные встречи, фильтровать по активности и городу, открывать то, что подходит.',
           },
           {
-            title: 'Находить чужие события',
-            text: 'Смотри, что уже происходит в городе, и присоединяйся к тому, что тебе подходит.',
+            title: 'Создание и редактирование',
+            text: 'Название, описание, тип активности, время, локация, точка на карте, видимость, режим вступления и контакты.',
           },
           {
-            title: 'Следить за участниками',
-            text: 'У события есть понятный список участников, чтобы было видно, кто уже идёт.',
+            title: 'Join, заявки и приглашения',
+            text: 'В открытые события можно вступить сразу. В request-событиях организатор сначала рассматривает заявку.',
           },
           {
-            title: 'Приглашать и делиться',
-            text: 'Можно пригласить людей напрямую или просто отправить ссылку на событие.',
+            title: 'Ясность по участникам',
+            text: 'Организатор и пользователи с доступом видят состав встречи, а приватные детали защищены правилами доступа.',
+          },
+          {
+            title: 'Уведомления и настройки',
+            text: 'Есть уведомления о ближайших событиях, новых участниках, приглашениях и заявках, плюс настройки уведомлений.',
+          },
+          {
+            title: 'Профиль и поддержка',
+            text: 'Пользователь может управлять профилем, языком, темой, безопасностью, обращениями в поддержку и статусом плана.',
+          },
+        ],
+      },
+      plans: {
+        eyebrow: 'Freemium-модель',
+        title: 'Free для простых встреч, Pro для активных организаторов',
+        text:
+          'В приложении уже есть модель free/pro. Цель не в том, чтобы рано давить на апгрейд, а в том, чтобы дать активным организаторам больше лимитов и контроля.',
+        tiers: [
+          {
+            name: 'Free',
+            label: 'Для обычных планов',
+            text: 'Базовый режим для людей, которые иногда создают или посещают встречи.',
+            items: [
+              'до 3 активных будущих событий',
+              'до 10 приглашений на событие',
+              'публичные события и основной join-flow',
+            ],
+          },
+          {
+            name: 'Pro',
+            label: 'Для организаторов',
+            text: 'Для тех, кто чаще собирает людей и хочет больше возможностей управления.',
+            items: [
+              'до 20 активных будущих событий',
+              'до 100 приглашений на событие',
+              'направление к закрытым событиям и инструментам организатора',
+            ],
           },
         ],
       },
       comparison: {
         eyebrow: 'Почему не просто чат',
-        title: 'Чат удобен для разговора, но неудобен для самой встречи',
+        title: 'Gathr не заменяет разговор. Он удерживает сам план.',
         text:
-          'Сообщения уходят вверх, детали теряются, состав участников меняется, и в какой-то момент уже непонятно, что вообще актуально. Gathr нужен не вместо общения, а чтобы сама встреча была собрана в структурированном виде.',
-        chatLabel: 'Обычный чат',
+          'Чат все еще полезен до и после встречи. Gathr добавляет структурный слой: детали события, состояние участников, приглашения, заявки и обновления в одном месте.',
+        chatLabel: 'Только чат',
         gathrLabel: 'Gathr',
         chatItems: [
-          'детали быстро теряются',
-          'сложно понять, кто точно идёт',
-          'нет одной точки входа в событие',
+          'детали быстро уезжают вверх',
+          'сложно понять, кто точно идет',
+          'решения и обновления смешаны с обычным разговором',
         ],
         gathrItems: [
-          'у события есть отдельная карточка',
-          'виден список участников',
-          'деталями легко делиться по ссылке',
+          'у каждой встречи есть отдельная страница',
+          'видны вступления, приглашения и заявки',
+          'событием можно поделиться и вернуться к нему позже',
         ],
       },
       howItWorks: {
         eyebrow: 'Как это работает',
-        title: 'Наглядно по основным шагам',
+        title: 'Основной сценарий в нескольких шагах',
         text:
-          'В приложении можно быстро найти событие, открыть его детали, присоединиться или создать своё. Ниже - демонстрация основных экранов с условными данными.',
+          'Gathr строится вокруг простого цикла: найти событие, открыть детали, присоединиться, создать свое и следить за изменениями.',
         steps: [
           {
-            title: '1. Найди событие',
-            text: 'Смотри актуальные встречи, фильтруй по интересам и городу, открывай то, что подходит тебе.',
+            title: '1. Найти встречу',
+            text: 'Смотри события по городу, активности и статусу. Свои и посещаемые события легко открыть снова.',
           },
           {
-            title: '2. Открой детали',
-            text: 'Внутри события видны описание, дата, место, участники и основные действия.',
+            title: '2. Проверить детали',
+            text: 'Внутри видны описание, время, место, карта, участники, контакты и режим вступления.',
           },
           {
-            title: '3. Создай своё событие',
-            text: 'Заполни короткую форму, выбери формат, время и локацию, а потом просто отправь ссылку людям.',
+            title: '3. Создать или пригласить',
+            text: 'Создай свое событие, выбери режим доступа, добавь локацию и пригласи людей напрямую или ссылкой.',
           },
           {
-            title: '4. Следи за изменениями',
-            text: 'Уведомления помогают не пропустить новых участников и важные обновления по встрече.',
+            title: '4. Следить за изменениями',
+            text: 'Уведомления помогают не пропустить ближайшие события, новых участников, приглашения и заявки.',
           },
         ],
       },
       useCases: {
-        eyebrow: 'Сценарии использования',
-        title: 'Для каких встреч это подходит',
+        eyebrow: 'Сценарии',
+        title: 'Для небольших живых встреч, которым нужна структура',
         text:
-          'Футбол, кофе, прогулки, настолки, встречи локальных сообществ, небольшие ивенты, знакомые компании и тимбилдинги.',
+          'Gathr подходит для повседневных планов, локальных сообществ, небольших событий, компаний друзей, командных встреч и групп, которым уже тесно в обычном чате.',
         chips: [
-          'Футбол',
           'Кофе',
           'Прогулки',
+          'Спорт',
           'Настолки',
-          'Нетворкинг',
-          'Тимбилдинги',
-          'Локальные встречи',
+          'Комьюнити',
+          'Командные встречи',
+          'Закрытые группы',
+          'Малые события',
         ],
       },
       cta: {
         eyebrow: 'Попробовать',
-        title: 'Открой Gathr и посмотри, как это работает на практике',
-        text: 'Сейчас проект находится на стадии MVP и постепенно набирает первых пользователей.',
+        title: 'Открой Gathr и сделай следующий план проще',
+        text:
+          'Продукт развивается, но основной сценарий уже есть: создать, поделиться, присоединиться, отправить заявку, пригласить и держать детали в одном месте.',
         button: 'Перейти в приложение',
       },
     },
@@ -440,26 +527,26 @@ export const translations: Record<Locale, Translation> = {
     },
     mock: {
       discover: {
-        tabs: ['События', 'Участвую', 'Мои события'],
-        filters: ['Все', 'Спорт', 'Нетворкинг', 'Еда'],
+        tabs: ['Обзор', 'Участвую', 'Мои'],
+        filters: ['Все', 'Спорт', 'Кофе', 'Tech'],
         cityLabel: 'Город',
         cityValue: 'Все города',
         cards: [
           {
-            title: 'Утренняя прогулка',
-            category: 'На улице',
-            date: '18.04.2026, 09:00',
-            location: 'Центральный парк, Кишинёв',
-            author: 'Создал Alex',
-            participants: '6 участников',
-          },
-          {
             title: 'Кофе после работы',
-            category: 'Нетворкинг',
-            date: '19.04.2026, 19:30',
+            category: 'Общение',
+            date: '19.05.2026, 19:30',
             location: 'Центр города',
             author: 'Создала Maria',
-            participants: '4 участника',
+            participants: '4 участвуют',
+          },
+          {
+            title: 'Футбол в субботу',
+            category: 'Спорт',
+            date: '23.05.2026, 10:00',
+            location: 'Центральное поле',
+            author: 'Создал Alex',
+            participants: '9 участвуют',
           },
         ],
         createAriaLabel: 'Создать событие',
@@ -467,13 +554,13 @@ export const translations: Record<Locale, Translation> = {
       },
       details: {
         back: 'Назад',
-        title: 'Кофе и знакомство',
+        title: 'Кофе и знакомства',
         text:
-          'Небольшая встреча в центре города. Можно просто зайти на кофе, познакомиться и пообщаться в спокойной компании.',
+          'Небольшая встреча в центре города. Можно зайти на кофе, познакомиться с людьми и держать весь план в одном месте.',
         dateLabel: 'Дата и время',
-        dateValue: '19.04.2026, 19:30',
+        dateValue: '19.05.2026, 19:30',
         locationLabel: 'Локация',
-        locationValue: 'Кишинёв, центр',
+        locationValue: 'Кишинев, центр',
         mapLabel: 'Карта события',
         participantsLabel: 'Участники (4)',
         share: 'Поделиться',
@@ -482,31 +569,31 @@ export const translations: Record<Locale, Translation> = {
       create: {
         cancel: 'Отмена',
         title: 'Создать событие',
-        eventNameLabel: 'Название события',
+        eventNameLabel: 'Название',
         eventNamePlaceholder: 'Что планируешь?',
         activityTypeLabel: 'Тип активности',
-        activityTypes: ['Спорт', 'Нетворкинг', 'Еда', 'Другое'],
+        activityTypes: ['Спорт', 'Общение', 'Tech', 'Другое'],
         descriptionLabel: 'Описание',
-        descriptionPlaceholder: 'Коротко опиши идею встречи...',
+        descriptionPlaceholder: 'Опиши встречу и для кого она...',
         dateLabel: 'Дата',
-        dateValue: '20.04.2026',
+        dateValue: '24.05.2026',
         timeLabel: 'Время',
         timeValue: '18:30',
         locationLabel: 'Локация',
-        locationValue: 'Кишинёв, центр',
-        mapLabel: 'Выбор точки на карте',
+        locationValue: 'Кишинев, центр',
+        mapLabel: 'Выбери точку на карте',
         submit: 'Создать событие',
       },
       notifications: {
         title: 'Уведомления',
         items: [
           {
-            text: 'Alex, Maria и ещё 2 человека присоединились к событию',
-            time: '2 часа назад',
+            text: 'Nina отправила заявку на твое событие',
+            time: '12 минут назад',
           },
           {
-            text: 'Организатор обновил локацию встречи',
-            time: 'Вчера',
+            text: 'Кофе после работы начнется завтра',
+            time: 'Сегодня',
           },
         ],
         bottomNav: ['Главная', 'Уведомления', 'Профиль'],
@@ -517,113 +604,151 @@ export const translations: Record<Locale, Translation> = {
     meta: {
       languageLabel: 'Limbă',
       themeToggleLabel: 'Schimbă tema',
-      dark: 'Întunecată',
-      light: 'Luminoasă',
+      dark: 'Întunecat',
+      light: 'Luminos',
     },
     hero: {
-      title: 'Un mod simplu de a aduna oameni pentru întâlniri reale',
+      title: 'Un loc mai clar pentru planuri în viața reală',
       description:
-        'Gathr te ajută să creezi evenimente locale, să găsești participanți, să distribui linkuri și să nu pierzi planurile în haosul chat-urilor.',
-      primaryCta: 'Deschide aplicația',
-      secondaryCta: 'Cum funcționează',
+        'Gathr te ajută să găsești întâlniri locale, să creezi evenimente, să inviți oameni și să nu pierzi detaliile importante în haosul chat-urilor.',
+      primaryCta: 'Deschide Gathr',
+      secondaryCta: 'Vezi fluxul',
     },
     sections: {
       why: {
         eyebrow: 'De ce Gathr',
-        title: 'Când întâlnirile trăiesc doar în chat, detaliile importante se pierd repede',
+        title: 'Chatul e bun pentru discuții. Nu e bun pentru organizare.',
         text:
-          'Cine vine, unde este întâlnirea, la ce oră începe, dacă evenimentul mai este actual și dacă mai sunt locuri disponibile - toate aceste informații se pierd repede printre mesaje. Gathr le adună într-un singur loc clar.',
-        cardTitle: 'Ce se schimbă',
+          'Ora, locul, participanții, actualizările, invitațiile și cererile de participare se împrăștie repede printre mesaje. Gathr oferă fiecărei întâlniri un loc clar.',
+        cardTitle: 'Ce devine mai clar',
         items: [
-          'fiecare întâlnire are propriul card de eveniment',
-          'data, locul și descrierea rămân vizibile',
-          'este clar cine participă deja',
-          'evenimentul se distribuie ușor prin link',
+          'o pagină de eveniment în loc de mesaje împrăștiate',
+          'ora, locul, harta și descrierea rămân vizibile',
+          'participanții, invitațiile și cererile sunt mai ușor de gestionat',
+          'actualizările și notificările nu se pierd în conversație',
         ],
       },
       features: {
-        eyebrow: 'Ce poți face',
-        title: 'Funcțiile principale',
+        eyebrow: 'Ce există acum',
+        title: 'Funcții construite în jurul unui eveniment real',
         items: [
           {
-            title: 'Creezi evenimente',
-            text: 'Adaugi formatul întâlnirii, descrierea, locația și detaliile importante într-un singur ecran clar.',
+            title: 'Descoperi evenimente locale',
+            text: 'Vezi întâlniri în apropiere, filtrezi după activitate și oraș și deschizi ce ți se potrivește.',
           },
           {
-            title: 'Descoperi evenimente',
-            text: 'Vezi ce se întâmplă deja în oraș și te alături la ceea ce ți se potrivește.',
+            title: 'Creezi și editezi evenimente',
+            text: 'Adaugi titlu, descriere, tip de activitate, oră, locație, hartă, vizibilitate, mod de alăturare și contacte.',
           },
           {
-            title: 'Urmărești participanții',
-            text: 'Fiecare eveniment are o listă clară de participanți, ca să vezi ușor cine vine deja.',
+            title: 'Participi, ceri acces sau inviți',
+            text: 'La evenimente deschise te poți alătura direct. La cele cu cerere, organizatorul aprobă participanții.',
           },
           {
-            title: 'Inviți și distribui',
-            text: 'Poți invita oameni direct sau poți trimite pur și simplu linkul evenimentului.',
+            title: 'Claritate despre participanți',
+            text: 'Organizatorii și oamenii cu acces pot vedea cine participă, iar detaliile private rămân protejate.',
+          },
+          {
+            title: 'Notificări și setări',
+            text: 'Gathr afișează evenimente apropiate, participanți noi, invitații, cereri de acces și setări pentru notificări.',
+          },
+          {
+            title: 'Profil și suport',
+            text: 'Utilizatorii pot gestiona profilul, limba, tema, securitatea, suportul și statutul planului curent.',
+          },
+        ],
+      },
+      plans: {
+        eyebrow: 'Model freemium',
+        title: 'Free pentru planuri simple, Pro pentru organizatori activi',
+        text:
+          'Aplicația are deja un model free/pro. Ideea nu este să împingem upgrade-uri prea devreme, ci să oferim mai mult spațiu și control celor care organizează mai des.',
+        tiers: [
+          {
+            name: 'Free',
+            label: 'Pentru planuri ocazionale',
+            text: 'Un punct de pornire practic pentru cei care creează sau se alătură la întâlniri din când în când.',
+            items: [
+              'până la 3 evenimente viitoare active',
+              'până la 10 invitații per eveniment',
+              'evenimente publice și fluxul de participare de bază',
+            ],
+          },
+          {
+            name: 'Pro',
+            label: 'Pentru organizatori',
+            text: 'Pentru cei care adună oameni mai des și au nevoie de mai mult control.',
+            items: [
+              'până la 20 de evenimente viitoare active',
+              'până la 100 de invitații per eveniment',
+              'direcție către evenimente private și instrumente de organizator',
+            ],
           },
         ],
       },
       comparison: {
         eyebrow: 'De ce nu doar chat',
-        title: 'Chatul este bun pentru conversație, dar nu pentru organizarea întâlnirii',
+        title: 'Gathr nu înlocuiește conversația. Ține planul stabil.',
         text:
-          'Mesajele urcă, detaliile se pierd, lista participanților se schimbă și la un moment dat nu mai este clar ce informație este actuală. Gathr nu înlocuiește comunicarea, ci oferă întâlnirii o structură clară.',
-        chatLabel: 'Chat obișnuit',
+          'Chatul rămâne util înainte și după întâlnire. Gathr adaugă stratul structurat: detalii, participanți, invitații, cereri și actualizări într-un singur loc.',
+        chatLabel: 'Doar chat',
         gathrLabel: 'Gathr',
         chatItems: [
-          'detaliile se pierd repede',
-          'este greu de înțeles cine vine sigur',
-          'nu există un singur punct de intrare în eveniment',
+          'detaliile dispar rapid',
+          'este greu să știi cine vine sigur',
+          'deciziile și actualizările se amestecă cu discuția',
         ],
         gathrItems: [
-          'fiecare întâlnire are un card separat',
-          'lista participanților este vizibilă',
-          'detaliile se distribuie ușor prin link',
+          'fiecare întâlnire are o pagină dedicată',
+          'participarea, invitațiile și cererile sunt vizibile',
+          'evenimentul poate fi distribuit și redeschis mai târziu',
         ],
       },
       howItWorks: {
         eyebrow: 'Cum funcționează',
         title: 'Fluxul principal, pe scurt',
         text:
-          'În aplicație poți găsi rapid un eveniment, îi poți deschide detaliile, te poți alătura sau poți crea unul nou. Mai jos este o demonstrație a principalelor ecrane cu date exemplificative.',
+          'Gathr este construit în jurul unui ciclu simplu: descoperi, deschizi, participi, creezi și urmărești schimbările.',
         steps: [
           {
-            title: '1. Găsește un eveniment',
-            text: 'Vezi întâlnirile active, filtrează după interese și oraș și deschide ce ți se potrivește.',
+            title: '1. Găsește o întâlnire',
+            text: 'Vezi evenimente după oraș, activitate și status. Evenimentele tale și cele la care participi rămân ușor de găsit.',
           },
           {
-            title: '2. Deschide detaliile',
-            text: 'În interiorul evenimentului vezi descrierea, data, locul, participanții și acțiunile principale.',
+            title: '2. Verifică detaliile',
+            text: 'Vezi descrierea, ora, locul, harta, participanții, contactele și modul de participare.',
           },
           {
-            title: '3. Creează propriul eveniment',
-            text: 'Completează un formular scurt, alege formatul, ora și locația, apoi trimite linkul.',
+            title: '3. Creează sau invită',
+            text: 'Creează propriul eveniment, alege modul de acces, adaugă locația și invită oameni direct sau prin link.',
           },
           {
-            title: '4. Urmărește schimbările',
-            text: 'Notificările te ajută să nu ratezi participanții noi și actualizările importante ale întâlnirii.',
+            title: '4. Rămâi la curent',
+            text: 'Notificările acoperă evenimente apropiate, participanți noi, invitații și cereri de acces.',
           },
         ],
       },
       useCases: {
-        eyebrow: 'Scenarii de utilizare',
-        title: 'Pentru ce tipuri de întâlniri se potrivește',
+        eyebrow: 'Scenarii',
+        title: 'Pentru întâlniri mici care au nevoie de structură',
         text:
-          'Fotbal, cafea, plimbări, jocuri de societate, întâlniri ale comunităților locale, evenimente mici, grupuri apropiate și team building.',
+          'Gathr se potrivește planurilor de zi cu zi, comunităților locale, evenimentelor mici, grupurilor private și echipelor care au nevoie de mai mult decât un thread de mesaje.',
         chips: [
-          'Fotbal',
           'Cafea',
           'Plimbări',
+          'Sport',
           'Board games',
-          'Networking',
-          'Team building',
-          'Întâlniri locale',
+          'Comunități',
+          'Echipe',
+          'Grupuri private',
+          'Evenimente mici',
         ],
       },
       cta: {
         eyebrow: 'Încearcă',
-        title: 'Deschide Gathr și vezi cum funcționează în practică',
-        text: 'Proiectul este acum în stadiul MVP și începe treptat să atragă primii utilizatori.',
+        title: 'Deschide Gathr și fă următorul plan mai ușor de urmărit',
+        text:
+          'Produsul evoluează, dar fluxul de bază există deja: creezi, distribui, participi, ceri acces, inviți și păstrezi detaliile într-un singur loc.',
         button: 'Deschide aplicația',
       },
     },
@@ -632,26 +757,26 @@ export const translations: Record<Locale, Translation> = {
     },
     mock: {
       discover: {
-        tabs: ['Evenimente', 'Particip', 'Evenimentele mele'],
-        filters: ['Toate', 'Sport', 'Networking', 'Mâncare'],
+        tabs: ['Descoperă', 'Particip', 'Ale mele'],
+        filters: ['Toate', 'Sport', 'Cafea', 'Tech'],
         cityLabel: 'Oraș',
         cityValue: 'Toate orașele',
         cards: [
           {
-            title: 'Plimbare de dimineață',
-            category: 'În aer liber',
-            date: '18.04.2026, 09:00',
-            location: 'Parcul Central, Chișinău',
-            author: 'Creat de Alex',
-            participants: '6 participanți',
-          },
-          {
             title: 'Cafea după muncă',
-            category: 'Networking',
-            date: '19.04.2026, 19:30',
+            category: 'Social',
+            date: '19.05.2026, 19:30',
             location: 'Centrul orașului',
             author: 'Creat de Maria',
-            participants: '4 participanți',
+            participants: '4 participă',
+          },
+          {
+            title: 'Fotbal sâmbătă',
+            category: 'Sport',
+            date: '23.05.2026, 10:00',
+            location: 'Terenul central',
+            author: 'Creat de Alex',
+            participants: '9 participă',
           },
         ],
         createAriaLabel: 'Creează eveniment',
@@ -661,9 +786,9 @@ export const translations: Record<Locale, Translation> = {
         back: 'Înapoi',
         title: 'Cafea și cunoaștere',
         text:
-          'O întâlnire mică în centrul orașului. Poți veni la o cafea, să cunoști oameni noi și să stați de vorbă într-o atmosferă relaxată.',
+          'O întâlnire mică în centrul orașului. Vino la o cafea, cunoaște oameni noi și păstrează planul clar.',
         dateLabel: 'Data și ora',
-        dateValue: '19.04.2026, 19:30',
+        dateValue: '19.05.2026, 19:30',
         locationLabel: 'Locație',
         locationValue: 'Chișinău, centru',
         mapLabel: 'Harta evenimentului',
@@ -674,14 +799,14 @@ export const translations: Record<Locale, Translation> = {
       create: {
         cancel: 'Anulează',
         title: 'Creează eveniment',
-        eventNameLabel: 'Numele evenimentului',
-        eventNamePlaceholder: 'Ce plănuiești?',
+        eventNameLabel: 'Numele',
+        eventNamePlaceholder: 'Ce planifici?',
         activityTypeLabel: 'Tipul activității',
-        activityTypes: ['Sport', 'Networking', 'Mâncare', 'Altceva'],
+        activityTypes: ['Sport', 'Social', 'Tech', 'Altceva'],
         descriptionLabel: 'Descriere',
-        descriptionPlaceholder: 'Descrie pe scurt ideea întâlnirii...',
+        descriptionPlaceholder: 'Descrie întâlnirea și pentru cine este...',
         dateLabel: 'Data',
-        dateValue: '20.04.2026',
+        dateValue: '24.05.2026',
         timeLabel: 'Ora',
         timeValue: '18:30',
         locationLabel: 'Locație',
@@ -693,15 +818,15 @@ export const translations: Record<Locale, Translation> = {
         title: 'Notificări',
         items: [
           {
-            text: 'Alex, Maria și încă 2 persoane s-au alăturat evenimentului',
-            time: 'acum 2 ore',
+            text: 'Nina a cerut acces la evenimentul tău',
+            time: 'acum 12 min',
           },
           {
-            text: 'Organizatorul a actualizat locația întâlnirii',
-            time: 'Ieri',
+            text: 'Cafea după muncă începe mâine',
+            time: 'Azi',
           },
         ],
-        bottomNav: ['Acasă', 'Notificări', 'Profil'],
+        bottomNav: ['Acasă', 'Alerte', 'Profil'],
       },
     },
   },

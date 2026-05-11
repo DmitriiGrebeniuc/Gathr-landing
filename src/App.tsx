@@ -243,16 +243,15 @@ function MockScreenNotifications({ locale }: { locale: Locale }) {
 }
 
 function App() {
-  const [theme, setTheme] = useState<ThemeMode>('dark')
-  const [locale, setLocale] = useState<Locale>(() => resolveInitialLocale())
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('gathr-landing-theme')
-
-    if (savedTheme === 'dark' || savedTheme === 'light') {
-      setTheme(savedTheme)
+  const [theme, setTheme] = useState<ThemeMode>(() => {
+    if (typeof window === 'undefined') {
+      return 'dark'
     }
-  }, [])
+
+    const savedTheme = window.localStorage.getItem('gathr-landing-theme')
+    return savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'dark'
+  })
+  const [locale, setLocale] = useState<Locale>(() => resolveInitialLocale())
 
   useEffect(() => {
     localStorage.setItem('gathr-landing-theme', theme)
@@ -369,6 +368,35 @@ function App() {
                 <article key={feature.title} className="feature-card">
                   <h3>{feature.title}</h3>
                   <p>{feature.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="section-copy section-copy-wide">
+              <span className="section-eyebrow">{t.sections.plans.eyebrow}</span>
+              <h2 className="section-title">{t.sections.plans.title}</h2>
+              <p className="section-text">{t.sections.plans.text}</p>
+            </div>
+
+            <div className="plans-grid">
+              {t.sections.plans.tiers.map((tier) => (
+                <article key={tier.name} className="plan-card">
+                  <div className="plan-card-header">
+                    <span className="plan-name">{tier.name}</span>
+                    <span className="plan-label">{tier.label}</span>
+                  </div>
+
+                  <p>{tier.text}</p>
+
+                  <ul className="plan-list">
+                    {tier.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </div>
