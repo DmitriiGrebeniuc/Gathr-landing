@@ -127,9 +127,19 @@ type Translation = {
       activityTypes: [string, string, string, string, string, string, string]
       joinModeLabel: string
       joinModeOptions: [string, string]
+      joinModeDescriptions: [string, string]
       joinModeHint: string
       descriptionLabel: string
       descriptionPlaceholder: string
+      dateTimeLabel: string
+      dateTimeValue: string
+      locationLabel: string
+      locationPlaceholder: string
+      mapHint: string
+      contactsLabel: string
+      instagramPlaceholder: string
+      telegramPlaceholder: string
+      phonePlaceholder: string
       submit: string
     }
     notifications: {
@@ -270,10 +280,14 @@ export const translations: Record<Locale, Translation> = {
           },
           {
             title: '3. Create or invite',
-            text: 'Set up your own event, choose the access mode, add location details, and invite people directly or by link.',
+            text: 'Set the title, activity type, join mode, and description so people understand what you are planning.',
           },
           {
-            title: '4. Stay updated',
+            title: '4. Add place and contacts',
+            text: 'Pick a point on the map, add location details, and leave Instagram, Telegram, or phone contacts for approved participants.',
+          },
+          {
+            title: '5. Stay updated',
             text: 'Notifications cover upcoming events, new participants, invitations, and pending join requests.',
           },
         ],
@@ -367,9 +381,19 @@ export const translations: Record<Locale, Translation> = {
         activityTypes: ['🌐 Sports', '🤝 Networking', '📚 Study', '🎮 Entertainment', '☕ Food and drinks', '🌿 Outdoors', '✨ Other'],
         joinModeLabel: 'Join mode',
         joinModeOptions: ['Open', 'By request'],
+        joinModeDescriptions: ['Anyone can join right away.', 'The user sends a request first.'],
         joinModeHint: 'Request mode is available only on Pro.',
         descriptionLabel: 'Description',
         descriptionPlaceholder: 'Add event details...',
+        dateTimeLabel: 'Date and time',
+        dateTimeValue: '24.05.2026, 19:00',
+        locationLabel: 'Location',
+        locationPlaceholder: 'Where will it happen?',
+        mapHint: 'Tap the map to choose the place.',
+        contactsLabel: 'Contact information',
+        instagramPlaceholder: 'Instagram username',
+        telegramPlaceholder: 'Telegram username',
+        phonePlaceholder: 'Phone number',
         submit: 'Create event',
       },
       notifications: {
@@ -504,10 +528,14 @@ export const translations: Record<Locale, Translation> = {
           },
           {
             title: '3. Создать или пригласить',
-            text: 'Создай свое событие, выбери режим доступа, добавь локацию и пригласи людей напрямую или ссылкой.',
+            text: 'Укажи название, тип активности, режим вступления и описание, чтобы людям было понятно, что планируется.',
           },
           {
-            title: '4. Следить за изменениями',
+            title: '4. Добавить место и контакты',
+            text: 'Выбери точку на карте, добавь локацию и оставь Instagram, Telegram или телефон для участников с доступом.',
+          },
+          {
+            title: '5. Следить за изменениями',
             text: 'Уведомления помогают не пропустить ближайшие события, новых участников, приглашения и заявки.',
           },
         ],
@@ -601,9 +629,22 @@ export const translations: Record<Locale, Translation> = {
         activityTypes: ['🌐 Спорт', '🤝 Нетворкинг', '📚 Учеба', '🎮 Развлечения', '☕ Еда и напитки', '🌿 На улице', '✨ Другое'],
         joinModeLabel: 'Режим вступления',
         joinModeOptions: ['Открытый', 'По заявке'],
+        joinModeDescriptions: [
+          'Любой пользователь может сразу присоединиться.',
+          'Сначала пользователь должен отправить заявку.',
+        ],
         joinModeHint: 'Режим по заявке доступен только на тарифе Pro.',
         descriptionLabel: 'Описание',
         descriptionPlaceholder: 'Добавь детали о событии...',
+        dateTimeLabel: 'Дата и время',
+        dateTimeValue: '24.05.2026, 19:00',
+        locationLabel: 'Локация',
+        locationPlaceholder: 'Где это произойдет?',
+        mapHint: 'Нажми на карту, чтобы выбрать место.',
+        contactsLabel: 'Контактная информация',
+        instagramPlaceholder: 'Ник в Instagram',
+        telegramPlaceholder: 'Ник в Telegram',
+        phonePlaceholder: 'Номер телефона',
         submit: 'Создать событие',
       },
       notifications: {
@@ -738,10 +779,14 @@ export const translations: Record<Locale, Translation> = {
           },
           {
             title: '3. Creează sau invită',
-            text: 'Creează propriul eveniment, alege modul de acces, adaugă locația și invită oameni direct sau prin link.',
+            text: 'Adaugă titlul, tipul activității, modul de participare și descrierea, ca oamenii să înțeleagă planul.',
           },
           {
-            title: '4. Rămâi la curent',
+            title: '4. Adaugă locul și contactele',
+            text: 'Alege punctul pe hartă, adaugă locația și lasă Instagram, Telegram sau telefon pentru participanții aprobați.',
+          },
+          {
+            title: '5. Rămâi la curent',
             text: 'Notificările acoperă evenimente apropiate, participanți noi, invitații și cereri de acces.',
           },
         ],
@@ -835,9 +880,22 @@ export const translations: Record<Locale, Translation> = {
         activityTypes: ['🌐 Sport', '🤝 Networking', '📚 Studii', '🎮 Divertisment', '☕ Mâncare și băuturi', '🌿 Afară', '✨ Altceva'],
         joinModeLabel: 'Mod de participare',
         joinModeOptions: ['Deschis', 'Cu cerere'],
+        joinModeDescriptions: [
+          'Oricine se poate alătura direct.',
+          'Utilizatorul trimite mai întâi o cerere.',
+        ],
         joinModeHint: 'Modul cu cerere este disponibil doar pe planul Pro.',
         descriptionLabel: 'Descriere',
         descriptionPlaceholder: 'Adaugă detalii despre eveniment...',
+        dateTimeLabel: 'Data și ora',
+        dateTimeValue: '24.05.2026, 19:00',
+        locationLabel: 'Locație',
+        locationPlaceholder: 'Unde va avea loc?',
+        mapHint: 'Apasă pe hartă ca să alegi locul.',
+        contactsLabel: 'Informații de contact',
+        instagramPlaceholder: 'Username Instagram',
+        telegramPlaceholder: 'Username Telegram',
+        phonePlaceholder: 'Număr de telefon',
         submit: 'Creează eveniment',
       },
       notifications: {

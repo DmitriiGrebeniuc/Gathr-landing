@@ -20,6 +20,31 @@ type MockEventCardProps = {
   badge: string
 }
 
+function PhoneBottomNav({
+  items,
+  createAriaLabel,
+}: {
+  items: [string, string, string]
+  createAriaLabel: string
+}) {
+  return (
+    <div className="phone-bottom-nav">
+      <span className="phone-nav-item is-active">
+        <span className="phone-nav-icon phone-nav-home" aria-hidden="true" />
+        <span className="phone-nav-label">{items[0]}</span>
+      </span>
+      <button className="mock-nav-create" type="button" aria-label={createAriaLabel}>
+        <span className="mock-nav-plus">+</span>
+        <span className="phone-nav-label">{items[1]}</span>
+      </button>
+      <span className="phone-nav-item">
+        <span className="phone-nav-icon phone-nav-profile" aria-hidden="true" />
+        <span className="phone-nav-label">{items[2]}</span>
+      </span>
+    </div>
+  )
+}
+
 function MockEventCard({
   title,
   category,
@@ -32,9 +57,9 @@ function MockEventCard({
   return (
     <article className="mock-event-card">
       <div className="mock-event-card-top">
+        <h4>{title}</h4>
         <span className="mock-badge">{badge}</span>
       </div>
-      <h4>{title}</h4>
       <span className="mock-chip">{category}</span>
       <p>{date}</p>
       <p>{location}</p>
@@ -98,16 +123,9 @@ function MockScreenDiscover({ locale }: { locale: Locale }) {
           <MockEventCard {...t.cards[1]} />
         </div>
 
-        <button className="mock-fab" type="button" aria-label={t.createAriaLabel}>
-          +
-        </button>
       </div>
 
-      <div className="phone-bottom-nav">
-        <span className="is-active">{t.bottomNav[0]}</span>
-        <span>{t.bottomNav[1]}</span>
-        <span>{t.bottomNav[2]}</span>
-      </div>
+      <PhoneBottomNav items={t.bottomNav} createAriaLabel={t.createAriaLabel} />
     </div>
   )
 }
@@ -211,11 +229,11 @@ function MockScreenCreate({ locale }: { locale: Locale }) {
           <div className="mock-mode-grid">
             <div className="mock-mode-card is-active">
               <strong>{t.joinModeOptions[0]}</strong>
-              <span>{locale === 'ru' ? 'Любой пользователь может сразу присоединиться.' : locale === 'ro' ? 'Oricine se poate alătura direct.' : 'Anyone can join right away.'}</span>
+              <span>{t.joinModeDescriptions[0]}</span>
             </div>
             <div className="mock-mode-card">
               <strong>{t.joinModeOptions[1]}</strong>
-              <span>{locale === 'ru' ? 'Сначала пользователь должен отправить заявку.' : locale === 'ro' ? 'Utilizatorul trimite mai întâi o cerere.' : 'The user sends a request first.'}</span>
+              <span>{t.joinModeDescriptions[1]}</span>
             </div>
           </div>
           <p className="mock-helper-text">{t.joinModeHint}</p>
@@ -224,6 +242,52 @@ function MockScreenCreate({ locale }: { locale: Locale }) {
         <div className="mock-input-group">
           <label>{t.descriptionLabel}</label>
           <div className="mock-textarea">{t.descriptionPlaceholder}</div>
+        </div>
+      </div>
+
+      <div className="phone-actions phone-actions-single">
+        <button className="phone-action-primary" type="button">
+          {t.submit}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function MockScreenCreateLocation({ locale }: { locale: Locale }) {
+  const t = translations[locale].mock.create
+
+  return (
+    <div className="phone-frame">
+      <div className="phone-sheet-header">
+        <span>{t.cancel}</span>
+        <strong>{t.title}</strong>
+        <span />
+      </div>
+
+      <div className="phone-content phone-content-tight">
+        <div className="mock-input-group">
+          <label>{t.dateTimeLabel}</label>
+          <div className="mock-input">{t.dateTimeValue}</div>
+        </div>
+
+        <div className="mock-input-group">
+          <label>{t.locationLabel}</label>
+          <div className="mock-input">{t.locationPlaceholder}</div>
+        </div>
+
+        <div className="mock-app-map">
+          <span className="mock-map-city">Chișinău</span>
+          <span className="mock-map-pin" />
+          <span className="mock-map-control">⌖</span>
+        </div>
+        <p className="mock-helper-text">{t.mapHint}</p>
+
+        <div className="mock-input-group mock-contact-fields">
+          <label>{t.contactsLabel}</label>
+          <div className="mock-input">{t.instagramPlaceholder}</div>
+          <div className="mock-input">{t.telegramPlaceholder}</div>
+          <div className="mock-input">{t.phonePlaceholder}</div>
         </div>
       </div>
 
@@ -273,11 +337,10 @@ function MockScreenNotifications({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="phone-bottom-nav">
-        <span>{t.bottomNav[0]}</span>
-        <span className="is-active">{t.bottomNav[1]}</span>
-        <span>{t.bottomNav[2]}</span>
-      </div>
+      <PhoneBottomNav
+        items={t.bottomNav}
+        createAriaLabel={translations[locale].mock.discover.createAriaLabel}
+      />
     </div>
   )
 }
@@ -509,10 +572,18 @@ function App() {
               </div>
 
               <div className="screen-showcase">
-                <MockScreenNotifications locale={locale} />
+                <MockScreenCreateLocation locale={locale} />
                 <div className="screen-showcase-copy">
                   <h3>{t.sections.howItWorks.steps[3].title}</h3>
                   <p>{t.sections.howItWorks.steps[3].text}</p>
+                </div>
+              </div>
+
+              <div className="screen-showcase">
+                <MockScreenNotifications locale={locale} />
+                <div className="screen-showcase-copy">
+                  <h3>{t.sections.howItWorks.steps[4].title}</h3>
+                  <p>{t.sections.howItWorks.steps[4].text}</p>
                 </div>
               </div>
             </div>
