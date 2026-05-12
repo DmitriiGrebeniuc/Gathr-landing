@@ -32,10 +32,10 @@ function MockEventCard({
   return (
     <article className="mock-event-card">
       <div className="mock-event-card-top">
-        <span className="mock-chip">{category}</span>
         <span className="mock-badge">{badge}</span>
       </div>
       <h4>{title}</h4>
+      <span className="mock-chip">{category}</span>
       <p>{date}</p>
       <p>{location}</p>
       <div className="mock-event-meta">
@@ -51,43 +51,50 @@ function MockScreenDiscover({ locale }: { locale: Locale }) {
 
   return (
     <div className="phone-frame">
-      <div className="phone-statusbar" />
       <div className="phone-header">
         <span className="phone-brand">Gathr</span>
         <span className="phone-city-pill">{t.cityPill}</span>
         <div className="phone-header-actions">
-          <span className="phone-circle">
-            <span className="phone-notification-badge">{t.notificationBadge}</span>
+          <span className="phone-circle phone-bell">
+            <span className="phone-bell-line" />
           </span>
-          <span className="phone-avatar">AB</span>
         </div>
-      </div>
-
-      <div className="phone-tabs">
-        <span className="is-active">{t.tabs[0]}</span>
-        <span>{t.tabs[1]}</span>
-        <span>{t.tabs[2]}</span>
       </div>
 
       <div className="phone-content">
+        <div className="mock-stats-panel">
+          {t.stats.map((stat) => (
+            <span key={stat}>
+              <strong>0</strong>
+              {stat}
+            </span>
+          ))}
+        </div>
+
+        <div className="phone-tabs phone-tabs-pills">
+          <span>{t.tabs[0]}</span>
+          <span className="is-active">{t.tabs[1]}</span>
+          <span>{t.tabs[2]}</span>
+        </div>
+
         <div className="mock-filter-row">
-          <span className="mock-pill is-active">{t.filters[0]}</span>
-          <span className="mock-pill">{t.filters[1]}</span>
-          <span className="mock-pill">{t.filters[2]}</span>
-          <span className="mock-pill">{t.filters[3]}</span>
-        </div>
-
-        <div className="mock-search-row">
-          <span>{t.searchLabel}</span>
-        </div>
-
-        <div className="mock-select">
-          <span className="mock-select-label">{t.cityLabel}</span>
-          <span className="mock-select-value">{t.cityValue}</span>
+          {t.filters.map((filter, index) => (
+            <span key={filter} className={`mock-pill ${index === 0 ? 'is-active' : ''}`}>
+              {filter}
+            </span>
+          ))}
         </div>
 
         <div className="mock-card-list">
+          <div className="mock-section-heading">
+            <h3>{t.weekTitle}</h3>
+            <p>{t.weekText}</p>
+          </div>
           <MockEventCard {...t.cards[0]} />
+          <div className="mock-section-heading">
+            <h3>{t.nextTitle}</h3>
+            <p>{t.nextText}</p>
+          </div>
           <MockEventCard {...t.cards[1]} />
         </div>
 
@@ -110,7 +117,6 @@ function MockScreenDetails({ locale }: { locale: Locale }) {
 
   return (
     <div className="phone-frame">
-      <div className="phone-statusbar" />
       <div className="phone-top-link">← {t.back}</div>
 
       <div className="phone-content phone-content-tight">
@@ -120,8 +126,13 @@ function MockScreenDetails({ locale }: { locale: Locale }) {
         </div>
         <p className="phone-screen-text">{t.text}</p>
 
+        <div className="mock-access-box">
+          <strong>{t.accessTitle}</strong>
+          <span>{t.accessText}</span>
+        </div>
+
         <div className="mock-detail-item">
-          <div className="mock-detail-icon" />
+          <div className="mock-detail-icon">▦</div>
           <div>
             <span>{t.dateLabel}</span>
             <strong>{t.dateValue}</strong>
@@ -129,7 +140,7 @@ function MockScreenDetails({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mock-detail-item">
-          <div className="mock-detail-icon" />
+          <div className="mock-detail-icon">⌖</div>
           <div>
             <span>{t.locationLabel}</span>
             <strong>{t.locationValue}</strong>
@@ -139,21 +150,19 @@ function MockScreenDetails({ locale }: { locale: Locale }) {
         <div className="mock-map">{t.mapLabel}</div>
 
         <div className="mock-contact-block">
-          <span>{t.contactsLabel}</span>
-          <div className="mock-filter-row">
-            <span className="mock-pill">{t.contacts[0]}</span>
-            <span className="mock-pill">{t.contacts[1]}</span>
-          </div>
+          <strong>{t.contactTitle}</strong>
+          <span>{t.contactText}</span>
+          {t.contacts.map((contact) => (
+            <div className="mock-contact-row" key={contact}>
+              <span className="mock-contact-icon" />
+              <span>{contact}</span>
+            </div>
+          ))}
         </div>
 
         <div className="mock-participants">
           <span>{t.participantsLabel}</span>
-          <div className="mock-avatars">
-            <span>AL</span>
-            <span>MR</span>
-            <span>DK</span>
-            <span>+1</span>
-          </div>
+          <div className="mock-muted-box">{t.participantHint}</div>
         </div>
       </div>
 
@@ -174,7 +183,6 @@ function MockScreenCreate({ locale }: { locale: Locale }) {
 
   return (
     <div className="phone-frame">
-      <div className="phone-statusbar" />
       <div className="phone-sheet-header">
         <span>{t.cancel}</span>
         <strong>{t.title}</strong>
@@ -190,52 +198,33 @@ function MockScreenCreate({ locale }: { locale: Locale }) {
         <div className="mock-input-group">
           <label>{t.activityTypeLabel}</label>
           <div className="mock-filter-row">
-            <span className="mock-pill">{t.activityTypes[0]}</span>
-            <span className="mock-pill is-active">{t.activityTypes[1]}</span>
-            <span className="mock-pill">{t.activityTypes[2]}</span>
-            <span className="mock-pill">{t.activityTypes[3]}</span>
+            {t.activityTypes.map((type, index) => (
+              <span key={type} className={`mock-pill ${index === t.activityTypes.length - 1 ? 'is-active' : ''}`}>
+                {type}
+              </span>
+            ))}
           </div>
+        </div>
+
+        <div className="mock-input-group">
+          <label>{t.joinModeLabel}</label>
+          <div className="mock-mode-grid">
+            <div className="mock-mode-card is-active">
+              <strong>{t.joinModeOptions[0]}</strong>
+              <span>{locale === 'ru' ? 'Любой пользователь может сразу присоединиться.' : locale === 'ro' ? 'Oricine se poate alătura direct.' : 'Anyone can join right away.'}</span>
+            </div>
+            <div className="mock-mode-card">
+              <strong>{t.joinModeOptions[1]}</strong>
+              <span>{locale === 'ru' ? 'Сначала пользователь должен отправить заявку.' : locale === 'ro' ? 'Utilizatorul trimite mai întâi o cerere.' : 'The user sends a request first.'}</span>
+            </div>
+          </div>
+          <p className="mock-helper-text">{t.joinModeHint}</p>
         </div>
 
         <div className="mock-input-group">
           <label>{t.descriptionLabel}</label>
           <div className="mock-textarea">{t.descriptionPlaceholder}</div>
         </div>
-
-        <div className="mock-inline-fields">
-          <div className="mock-input-group">
-            <label>{t.visibilityLabel}</label>
-            <div className="mock-segmented">
-              <span className="is-active">{t.visibilityOptions[0]}</span>
-              <span>{t.visibilityOptions[1]}</span>
-            </div>
-          </div>
-          <div className="mock-input-group">
-            <label>{t.joinModeLabel}</label>
-            <div className="mock-segmented">
-              <span>{t.joinModeOptions[0]}</span>
-              <span className="is-active">{t.joinModeOptions[1]}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="mock-inline-fields">
-          <div className="mock-input-group">
-            <label>{t.dateLabel}</label>
-            <div className="mock-input">{t.dateValue}</div>
-          </div>
-          <div className="mock-input-group">
-            <label>{t.timeLabel}</label>
-            <div className="mock-input">{t.timeValue}</div>
-          </div>
-        </div>
-
-        <div className="mock-input-group">
-          <label>{t.locationLabel}</label>
-          <div className="mock-input">{t.locationValue}</div>
-        </div>
-
-        <div className="mock-map">{t.mapLabel}</div>
       </div>
 
       <div className="phone-actions phone-actions-single">
@@ -252,32 +241,35 @@ function MockScreenNotifications({ locale }: { locale: Locale }) {
 
   return (
     <div className="phone-frame">
-      <div className="phone-statusbar" />
+      <div className="phone-header">
+        <span className="phone-brand">Gathr</span>
+        <span className="phone-city-pill">{translations[locale].mock.discover.cityPill}</span>
+        <div className="phone-header-actions">
+          <span className="phone-circle phone-bell">
+            <span className="phone-notification-badge">3</span>
+            <span className="phone-bell-line" />
+          </span>
+        </div>
+      </div>
       <div className="phone-content phone-content-tight">
-        <h3 className="phone-screen-title">{t.title}</h3>
-
-        <div className="mock-notification-card">
-          <div className="mock-notification-icon">👋</div>
-          <div className="mock-notification-copy">
-            <strong>{t.items[0].text}</strong>
-            <span>{t.items[0].time}</span>
+        <div className="mock-notifications-panel">
+          <div className="mock-notifications-title">
+            <h3>{t.title}</h3>
+            <span>{t.all}</span>
           </div>
-        </div>
 
-        <div className="mock-notification-card">
-          <div className="mock-notification-icon">⏱</div>
-          <div className="mock-notification-copy">
-            <strong>{t.items[1].text}</strong>
-            <span>{t.items[1].time}</span>
-          </div>
-        </div>
-
-        <div className="mock-notification-card">
-          <div className="mock-notification-icon">✉</div>
-          <div className="mock-notification-copy">
-            <strong>{t.items[2].text}</strong>
-            <span>{t.items[2].time}</span>
-          </div>
+          {t.items.map((item, index) => (
+            <div className="mock-notification-card" key={item.title}>
+              <div className="mock-notification-icon">{index === 0 ? '♙' : index === 1 ? '✉' : '▣'}</div>
+              <div className="mock-notification-copy">
+                <div>
+                  <strong>{item.title}</strong>
+                  <em>{item.time}</em>
+                </div>
+                <span>{item.text}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

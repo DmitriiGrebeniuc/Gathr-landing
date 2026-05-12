@@ -87,12 +87,13 @@ type Translation = {
   mock: {
     discover: {
       cityPill: string
-      notificationBadge: string
+      stats: [string, string, string]
       tabs: [string, string, string]
-      filters: [string, string, string, string]
-      searchLabel: string
-      cityLabel: string
-      cityValue: string
+      filters: [string, string, string, string, string]
+      weekTitle: string
+      weekText: string
+      nextTitle: string
+      nextText: string
       cards: [MockEventCardTranslation, MockEventCardTranslation]
       createAriaLabel: string
       bottomNav: [string, string, string]
@@ -102,14 +103,18 @@ type Translation = {
       title: string
       badge: string
       text: string
+      accessTitle: string
+      accessText: string
       dateLabel: string
       dateValue: string
       locationLabel: string
       locationValue: string
       mapLabel: string
+      contactTitle: string
+      contactText: string
+      contacts: [string, string, string]
       participantsLabel: string
-      contactsLabel: string
-      contacts: [string, string]
+      participantHint: string
       share: string
       join: string
     }
@@ -119,28 +124,21 @@ type Translation = {
       eventNameLabel: string
       eventNamePlaceholder: string
       activityTypeLabel: string
-      activityTypes: [string, string, string, string]
-      descriptionLabel: string
-      descriptionPlaceholder: string
-      visibilityLabel: string
-      visibilityOptions: [string, string]
+      activityTypes: [string, string, string, string, string, string, string]
       joinModeLabel: string
       joinModeOptions: [string, string]
-      dateLabel: string
-      dateValue: string
-      timeLabel: string
-      timeValue: string
-      locationLabel: string
-      locationValue: string
-      mapLabel: string
+      joinModeHint: string
+      descriptionLabel: string
+      descriptionPlaceholder: string
       submit: string
     }
     notifications: {
       title: string
+      all: string
       items: [
-        { text: string; time: string },
-        { text: string; time: string },
-        { text: string; time: string },
+        { title: string; text: string; time: string },
+        { title: string; text: string; time: string },
+        { title: string; text: string; time: string },
       ]
       bottomNav: [string, string, string]
     }
@@ -233,7 +231,7 @@ export const translations: Record<Locale, Translation> = {
             items: [
               'up to 20 active future events',
               'up to 100 invitations per event',
-              'a path toward private events and organizer tools',
+              'private events and request-based access',
             ],
           },
         ],
@@ -310,51 +308,55 @@ export const translations: Record<Locale, Translation> = {
     mock: {
       discover: {
         cityPill: 'All cities',
-        notificationBadge: '4',
-        tabs: ['Discover', 'Joined', 'My events'],
-        filters: ['All', 'Sports', 'Coffee', 'Tech'],
-        searchLabel: 'Search',
-        cityLabel: 'City',
-        cityValue: 'All cities',
+        stats: ['Going', 'Created', 'Requests'],
+        tabs: ['Overview', 'Events', 'Joined'],
+        filters: ['All', 'Sports', 'Networking', 'Books', 'Search'],
+        weekTitle: 'Selected this week',
+        weekText: 'Closest events with visible real activity.',
+        nextTitle: 'Upcoming events',
+        nextText: 'Plans you can still join.',
         cards: [
           {
-            title: 'Coffee after work',
-            category: 'Social',
-            date: '19.05.2026, 19:30',
-            location: 'City center',
-            author: 'Created by Maria',
-            participants: '4 joined',
-            badge: 'Open',
+            title: 'Welcome to Gathr 👋',
+            category: '🤝 Networking',
+            date: '31.12.2026, 23:59:00',
+            location: 'Piața Marii Adunări Naționale 12, Chișinău',
+            author: 'Created by Dmitrii Grebeniuc',
+            participants: '29 participants',
+            badge: 'Choice',
           },
           {
-            title: 'Saturday football',
-            category: 'Sports',
-            date: '23.05.2026, 10:00',
-            location: 'Central field',
-            author: 'Created by Alex',
-            participants: '9 joined',
-            badge: 'Request',
+            title: 'Board games without noisy party',
+            category: '🎮 Entertainment',
+            date: 'Hidden until approval',
+            location: 'Location hidden until approval',
+            author: 'Request access',
+            participants: 'Closed',
+            badge: 'Closed',
           },
         ],
         createAriaLabel: 'Create event',
-        bottomNav: ['Home', 'Alerts', 'Profile'],
+        bottomNav: ['Home', 'Create', 'Profile'],
       },
       details: {
         back: 'Back',
-        title: 'Coffee and introductions',
-        badge: 'Request to join',
-        text:
-          'A small meetup in the city center. Come by for coffee, meet new people, and keep the plan in one clear place.',
+        title: 'Weekend breakfast',
+        badge: 'Closed',
+        text: 'Coffee, food, and a calm start to the weekend. This event uses requests so the group stays small.',
+        accessTitle: 'Access by request',
+        accessText: 'Date, location, and map open after the creator approves your request.',
         dateLabel: 'Date and time',
-        dateValue: '19.05.2026, 19:30',
+        dateValue: 'Hidden until approval',
         locationLabel: 'Location',
-        locationValue: 'Chisinau, center',
-        mapLabel: 'Event map',
-        participantsLabel: 'Participants (4)',
-        contactsLabel: 'Contact options',
-        contacts: ['Telegram', 'Instagram'],
+        locationValue: 'Hidden until approval',
+        mapLabel: 'The map opens after your request is approved.',
+        contactTitle: 'Contact the organizer',
+        contactText: 'Visible only to event participants.',
+        contacts: ['Open Instagram', 'Open Telegram', 'Call'],
+        participantsLabel: 'Participants (6)',
+        participantHint: 'Only participant count is available now. Names open after joining.',
         share: 'Share',
-        join: 'Request',
+        join: 'Request access',
       },
       create: {
         cancel: 'Cancel',
@@ -362,39 +364,23 @@ export const translations: Record<Locale, Translation> = {
         eventNameLabel: 'Event name',
         eventNamePlaceholder: 'What are you planning?',
         activityTypeLabel: 'Activity type',
-        activityTypes: ['Sports', 'Social', 'Tech', 'Other'],
-        descriptionLabel: 'Description',
-        descriptionPlaceholder: 'Describe the meetup and who it is for...',
-        visibilityLabel: 'Visibility',
-        visibilityOptions: ['Public', 'Private'],
+        activityTypes: ['🌐 Sports', '🤝 Networking', '📚 Study', '🎮 Entertainment', '☕ Food and drinks', '🌿 Outdoors', '✨ Other'],
         joinModeLabel: 'Join mode',
-        joinModeOptions: ['Open', 'Request'],
-        dateLabel: 'Date',
-        dateValue: '24.05.2026',
-        timeLabel: 'Time',
-        timeValue: '18:30',
-        locationLabel: 'Location',
-        locationValue: 'Chisinau, center',
-        mapLabel: 'Pick a point on the map',
+        joinModeOptions: ['Open', 'By request'],
+        joinModeHint: 'Request mode is available only on Pro.',
+        descriptionLabel: 'Description',
+        descriptionPlaceholder: 'Add event details...',
         submit: 'Create event',
       },
       notifications: {
         title: 'Notifications',
+        all: 'All',
         items: [
-          {
-            text: 'Nina requested to join your event',
-            time: '12 min ago',
-          },
-          {
-            text: 'Coffee after work starts tomorrow',
-            time: 'Today',
-          },
-          {
-            text: 'Maria invited you to Saturday football',
-            time: 'Yesterday',
-          },
+          { title: 'New participant', text: 'Alexei S. joined you', time: '2 min ago' },
+          { title: 'Invitation', text: 'You were invited to Morning run', time: '15 min ago' },
+          { title: 'Reminder', text: 'Today at 19:00 - Movie discussion', time: '1h ago' },
         ],
-        bottomNav: ['Home', 'Alerts', 'Profile'],
+        bottomNav: ['Home', 'Create', 'Profile'],
       },
     },
   },
@@ -439,8 +425,8 @@ export const translations: Record<Locale, Translation> = {
             text: 'Название, описание, тип активности, время, локация, точка на карте, видимость, режим вступления и контакты.',
           },
           {
-            title: 'Join, заявки и приглашения',
-            text: 'В открытые события можно вступить сразу. В request-событиях организатор сначала рассматривает заявку.',
+            title: 'Вступление, заявки и приглашения',
+            text: 'В открытые события можно вступить сразу. В события по заявке организатор сначала рассматривает участника.',
           },
           {
             title: 'Ясность по участникам',
@@ -465,28 +451,28 @@ export const translations: Record<Locale, Translation> = {
           {
             name: 'Free',
             label: 'Для обычных планов',
-            text: 'Базовый режим для людей, которые иногда создают или посещают встречи.',
+            text: 'Базовый режим для людей, которые иногда создают встречи или присоединяются к ним.',
             items: [
               'до 3 активных будущих событий',
               'до 10 приглашений на событие',
-              'публичные события и основной join-flow',
+              'публичные события и базовый сценарий вступления',
             ],
           },
           {
             name: 'Pro',
             label: 'Для организаторов',
-            text: 'Для тех, кто чаще собирает людей и хочет больше возможностей управления.',
+            text: 'Для тех, кто собирает людей чаще и хочет больше контроля.',
             items: [
               'до 20 активных будущих событий',
               'до 100 приглашений на событие',
-              'направление к закрытым событиям и инструментам организатора',
+              'закрытые события и доступ по заявке',
             ],
           },
         ],
       },
       comparison: {
         eyebrow: 'Почему не просто чат',
-        title: 'Gathr не заменяет разговор. Он удерживает сам план.',
+        title: 'Gathr не заменяет общение. Он удерживает сам план.',
         text:
           'Чат все еще полезен до и после встречи. Gathr добавляет структурный слой: детали события, состояние участников, приглашения, заявки и обновления в одном месте.',
         chatLabel: 'Только чат',
@@ -494,27 +480,27 @@ export const translations: Record<Locale, Translation> = {
         chatItems: [
           'детали быстро уезжают вверх',
           'сложно понять, кто точно идет',
-          'решения и обновления смешаны с обычным разговором',
+          'решения и обновления смешиваются с разговором',
         ],
         gathrItems: [
           'у каждой встречи есть отдельная страница',
-          'видны вступления, приглашения и заявки',
-          'событием можно поделиться и вернуться к нему позже',
+          'видно состояние вступления, приглашений и заявок',
+          'событие можно поделиться и открыть позже',
         ],
       },
       howItWorks: {
         eyebrow: 'Как это работает',
-        title: 'Основной сценарий в нескольких шагах',
+        title: 'Основной сценарий в четырех шагах',
         text:
-          'Gathr строится вокруг простого цикла: найти событие, открыть детали, присоединиться, создать свое и следить за изменениями.',
+          'Gathr построен вокруг простого цикла: найти событие, открыть детали, присоединиться или создать свое, а потом не пропустить изменения.',
         steps: [
           {
             title: '1. Найти встречу',
-            text: 'Смотри события по городу, активности и статусу. Свои и посещаемые события легко открыть снова.',
+            text: 'Смотри события по городу, активности и статусу. Свои события и участия остаются под рукой.',
           },
           {
             title: '2. Проверить детали',
-            text: 'Внутри видны описание, время, место, карта, участники, контакты и режим вступления.',
+            text: 'Видны описание, время, место, карта, участники, контакты и режим вступления.',
           },
           {
             title: '3. Создать или пригласить',
@@ -556,91 +542,79 @@ export const translations: Record<Locale, Translation> = {
     mock: {
       discover: {
         cityPill: 'Все города',
-        notificationBadge: '4',
-        tabs: ['Обзор', 'Участвую', 'Мои'],
-        filters: ['Все', 'Спорт', 'Кофе', 'Tech'],
-        searchLabel: 'Поиск',
-        cityLabel: 'Город',
-        cityValue: 'Все города',
+        stats: ['Иду', 'Создал', 'Заявки'],
+        tabs: ['Обзор', 'События', 'Участвую'],
+        filters: ['Все', 'Спорт', 'Нетворкинг', 'Книги', 'Поиск'],
+        weekTitle: 'Выбранное на этой неделе',
+        weekText: 'Ближайшие события с самой заметной реальной активностью.',
+        nextTitle: 'Ближайшие события',
+        nextText: 'Планы, к которым еще можно присоединиться.',
         cards: [
           {
-            title: 'Кофе после работы',
-            category: 'Общение',
-            date: '19.05.2026, 19:30',
-            location: 'Центр города',
-            author: 'Создала Maria',
-            participants: '4 участвуют',
-            badge: 'Открыто',
+            title: 'Добро пожаловать в Gathr 👋',
+            category: '🤝 Нетворкинг',
+            date: '31.12.2026, 23:59:00',
+            location: 'Piața Marii Adunări Naționale 12, Chișinău',
+            author: 'Создал Dmitrii Grebeniuc',
+            participants: '29 участников',
+            badge: 'Выбор',
           },
           {
-            title: 'Футбол в субботу',
-            category: 'Спорт',
-            date: '23.05.2026, 10:00',
-            location: 'Центральное поле',
-            author: 'Создал Alex',
-            participants: '9 участвуют',
-            badge: 'Заявка',
+            title: 'Настолки без шумной тусовки',
+            category: '🎮 Развлечения',
+            date: 'Дата откроется после одобрения',
+            location: 'Локация откроется после одобрения',
+            author: 'Доступ по заявке',
+            participants: 'Закрытое',
+            badge: 'Закрытое',
           },
         ],
         createAriaLabel: 'Создать событие',
-        bottomNav: ['Главная', 'Уведомления', 'Профиль'],
+        bottomNav: ['Главная', 'Создать', 'Профиль'],
       },
       details: {
         back: 'Назад',
-        title: 'Кофе и знакомства',
-        badge: 'Вход по заявке',
-        text:
-          'Небольшая встреча в центре города. Можно зайти на кофе, познакомиться с людьми и держать весь план в одном месте.',
+        title: 'Завтрак выходного дня',
+        badge: 'Закрытое',
+        text: 'Кофе, еда и спокойное начало выходного. Событие по заявке, чтобы группа оставалась маленькой.',
+        accessTitle: 'Доступ по заявке',
+        accessText: 'Дата, локация и карта откроются после того, как создатель одобрит вашу заявку.',
         dateLabel: 'Дата и время',
-        dateValue: '19.05.2026, 19:30',
+        dateValue: 'Скрыто до одобрения',
         locationLabel: 'Локация',
-        locationValue: 'Кишинев, центр',
-        mapLabel: 'Карта события',
-        participantsLabel: 'Участники (4)',
-        contactsLabel: 'Контакты',
-        contacts: ['Telegram', 'Instagram'],
+        locationValue: 'Скрыто до одобрения',
+        mapLabel: 'Карта откроется после одобрения вашей заявки.',
+        contactTitle: 'Связаться с организатором',
+        contactText: 'Блок виден только участникам события.',
+        contacts: ['Открыть Instagram', 'Открыть Telegram', 'Позвонить'],
+        participantsLabel: 'Участники (6)',
+        participantHint: 'Сейчас доступно только количество участников. Имена откроются после вступления в событие.',
         share: 'Поделиться',
-        join: 'Отправить заявку',
+        join: 'Подать заявку',
       },
       create: {
         cancel: 'Отмена',
         title: 'Создать событие',
-        eventNameLabel: 'Название',
-        eventNamePlaceholder: 'Что планируешь?',
+        eventNameLabel: 'Название события',
+        eventNamePlaceholder: 'Что ты планируешь?',
         activityTypeLabel: 'Тип активности',
-        activityTypes: ['Спорт', 'Общение', 'Tech', 'Другое'],
+        activityTypes: ['🌐 Спорт', '🤝 Нетворкинг', '📚 Учеба', '🎮 Развлечения', '☕ Еда и напитки', '🌿 На улице', '✨ Другое'],
+        joinModeLabel: 'Режим вступления',
+        joinModeOptions: ['Открытый', 'По заявке'],
+        joinModeHint: 'Режим по заявке доступен только на тарифе Pro.',
         descriptionLabel: 'Описание',
-        descriptionPlaceholder: 'Опиши встречу и для кого она...',
-        visibilityLabel: 'Видимость',
-        visibilityOptions: ['Публичное', 'Закрытое'],
-        joinModeLabel: 'Вступление',
-        joinModeOptions: ['Сразу', 'По заявке'],
-        dateLabel: 'Дата',
-        dateValue: '24.05.2026',
-        timeLabel: 'Время',
-        timeValue: '18:30',
-        locationLabel: 'Локация',
-        locationValue: 'Кишинев, центр',
-        mapLabel: 'Выбери точку на карте',
+        descriptionPlaceholder: 'Добавь детали о событии...',
         submit: 'Создать событие',
       },
       notifications: {
         title: 'Уведомления',
+        all: 'Все',
         items: [
-          {
-            text: 'Nina отправила заявку на твое событие',
-            time: '12 минут назад',
-          },
-          {
-            text: 'Кофе после работы начнется завтра',
-            time: 'Сегодня',
-          },
-          {
-            text: 'Maria пригласила тебя на футбол в субботу',
-            time: 'Вчера',
-          },
+          { title: 'Новый участник', text: 'К вам присоединился Алексей С.', time: '2 мин назад' },
+          { title: 'Приглашение', text: 'Вас пригласили на событие «Утренний забег»', time: '15 мин назад' },
+          { title: 'Напоминание', text: 'Сегодня в 19:00 — Кино и обсуждение', time: '1 ч назад' },
         ],
-        bottomNav: ['Главная', 'Уведомления', 'Профиль'],
+        bottomNav: ['Главная', 'Создать', 'Профиль'],
       },
     },
   },
@@ -725,7 +699,7 @@ export const translations: Record<Locale, Translation> = {
             items: [
               'până la 20 de evenimente viitoare active',
               'până la 100 de invitații per eveniment',
-              'direcție către evenimente private și instrumente de organizator',
+              'evenimente private și acces cu cerere',
             ],
           },
         ],
@@ -802,91 +776,79 @@ export const translations: Record<Locale, Translation> = {
     mock: {
       discover: {
         cityPill: 'Toate orașele',
-        notificationBadge: '4',
-        tabs: ['Descoperă', 'Particip', 'Ale mele'],
-        filters: ['Toate', 'Sport', 'Cafea', 'Tech'],
-        searchLabel: 'Caută',
-        cityLabel: 'Oraș',
-        cityValue: 'Toate orașele',
+        stats: ['Particip', 'Create', 'Cereri'],
+        tabs: ['Overview', 'Evenimente', 'Particip'],
+        filters: ['Toate', 'Sport', 'Networking', 'Cărți', 'Caută'],
+        weekTitle: 'Selectate săptămâna aceasta',
+        weekText: 'Cele mai apropiate evenimente cu activitate reală vizibilă.',
+        nextTitle: 'Evenimente apropiate',
+        nextText: 'Planuri la care încă te poți alătura.',
         cards: [
           {
-            title: 'Cafea după muncă',
-            category: 'Social',
-            date: '19.05.2026, 19:30',
-            location: 'Centrul orașului',
-            author: 'Creat de Maria',
-            participants: '4 participă',
-            badge: 'Deschis',
+            title: 'Bun venit în Gathr 👋',
+            category: '🤝 Networking',
+            date: '31.12.2026, 23:59:00',
+            location: 'Piața Marii Adunări Naționale 12, Chișinău',
+            author: 'Creat de Dmitrii Grebeniuc',
+            participants: '29 participanți',
+            badge: 'Alegere',
           },
           {
-            title: 'Fotbal sâmbătă',
-            category: 'Sport',
-            date: '23.05.2026, 10:00',
-            location: 'Terenul central',
-            author: 'Creat de Alex',
-            participants: '9 participă',
-            badge: 'Cerere',
+            title: 'Jocuri de masă fără petrecere gălăgioasă',
+            category: '🎮 Divertisment',
+            date: 'Data se deschide după aprobare',
+            location: 'Locația se deschide după aprobare',
+            author: 'Acces cu cerere',
+            participants: 'Privat',
+            badge: 'Privat',
           },
         ],
         createAriaLabel: 'Creează eveniment',
-        bottomNav: ['Acasă', 'Alerte', 'Profil'],
+        bottomNav: ['Acasă', 'Creează', 'Profil'],
       },
       details: {
         back: 'Înapoi',
-        title: 'Cafea și cunoaștere',
-        badge: 'Acces cu cerere',
-        text:
-          'O întâlnire mică în centrul orașului. Vino la o cafea, cunoaște oameni noi și păstrează planul clar.',
+        title: 'Mic dejun de weekend',
+        badge: 'Privat',
+        text: 'Cafea, mâncare și un început liniștit de weekend. Evenimentul folosește cereri ca grupul să rămână mic.',
+        accessTitle: 'Acces cu cerere',
+        accessText: 'Data, locația și harta se deschid după ce creatorul îți aprobă cererea.',
         dateLabel: 'Data și ora',
-        dateValue: '19.05.2026, 19:30',
+        dateValue: 'Ascuns până la aprobare',
         locationLabel: 'Locație',
-        locationValue: 'Chișinău, centru',
-        mapLabel: 'Harta evenimentului',
-        participantsLabel: 'Participanți (4)',
-        contactsLabel: 'Contacte',
-        contacts: ['Telegram', 'Instagram'],
+        locationValue: 'Ascunsă până la aprobare',
+        mapLabel: 'Harta se deschide după aprobarea cererii tale.',
+        contactTitle: 'Contactează organizatorul',
+        contactText: 'Blocul este vizibil doar participanților.',
+        contacts: ['Deschide Instagram', 'Deschide Telegram', 'Sună'],
+        participantsLabel: 'Participanți (6)',
+        participantHint: 'Acum este disponibil doar numărul de participanți. Numele se deschid după alăturare.',
         share: 'Distribuie',
         join: 'Cere acces',
       },
       create: {
         cancel: 'Anulează',
         title: 'Creează eveniment',
-        eventNameLabel: 'Numele',
+        eventNameLabel: 'Numele evenimentului',
         eventNamePlaceholder: 'Ce planifici?',
         activityTypeLabel: 'Tipul activității',
-        activityTypes: ['Sport', 'Social', 'Tech', 'Altceva'],
-        descriptionLabel: 'Descriere',
-        descriptionPlaceholder: 'Descrie întâlnirea și pentru cine este...',
-        visibilityLabel: 'Vizibilitate',
-        visibilityOptions: ['Public', 'Privat'],
+        activityTypes: ['🌐 Sport', '🤝 Networking', '📚 Studii', '🎮 Divertisment', '☕ Mâncare și băuturi', '🌿 Afară', '✨ Altceva'],
         joinModeLabel: 'Mod de participare',
-        joinModeOptions: ['Direct', 'Cu cerere'],
-        dateLabel: 'Data',
-        dateValue: '24.05.2026',
-        timeLabel: 'Ora',
-        timeValue: '18:30',
-        locationLabel: 'Locație',
-        locationValue: 'Chișinău, centru',
-        mapLabel: 'Alege un punct pe hartă',
+        joinModeOptions: ['Deschis', 'Cu cerere'],
+        joinModeHint: 'Modul cu cerere este disponibil doar pe planul Pro.',
+        descriptionLabel: 'Descriere',
+        descriptionPlaceholder: 'Adaugă detalii despre eveniment...',
         submit: 'Creează eveniment',
       },
       notifications: {
         title: 'Notificări',
+        all: 'Toate',
         items: [
-          {
-            text: 'Nina a cerut acces la evenimentul tău',
-            time: 'acum 12 min',
-          },
-          {
-            text: 'Cafea după muncă începe mâine',
-            time: 'Azi',
-          },
-          {
-            text: 'Maria te-a invitat la fotbal sâmbătă',
-            time: 'Ieri',
-          },
+          { title: 'Participant nou', text: 'Alexei S. s-a alăturat', time: 'acum 2 min' },
+          { title: 'Invitație', text: 'Ai fost invitat la „Alergare de dimineață”', time: 'acum 15 min' },
+          { title: 'Reminder', text: 'Azi la 19:00 — Film și discuție', time: 'acum 1h' },
         ],
-        bottomNav: ['Acasă', 'Alerte', 'Profil'],
+        bottomNav: ['Acasă', 'Creează', 'Profil'],
       },
     },
   },
@@ -928,9 +890,10 @@ export function getBrowserLocale(): Locale {
     return 'en'
   }
 
-  const candidates = Array.isArray(navigator.languages) && navigator.languages.length > 0
-    ? navigator.languages
-    : [navigator.language]
+  const candidates =
+    Array.isArray(navigator.languages) && navigator.languages.length > 0
+      ? navigator.languages
+      : [navigator.language]
 
   for (const candidate of candidates) {
     const locale = normalizeLocale(candidate)
