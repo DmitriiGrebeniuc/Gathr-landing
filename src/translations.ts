@@ -24,6 +24,15 @@ type Translation = {
     secondaryCta: string
     supportCta: string
   }
+  support: {
+    title: string
+    description: string
+    paypalTab: string
+    paypalDescription: string
+    paypalButton: string
+    miaTab: string
+    miaDescription: string
+  }
   sections: {
     why: {
       eyebrow: string
@@ -175,6 +184,17 @@ export const translations: Record<Locale, Translation> = {
       primaryCta: 'Open Gathr',
       secondaryCta: 'See the flow',
       supportCta: 'Support the project',
+    },
+    support: {
+      title: 'Support Gathr',
+      description:
+        'If you believe in Gathr, you can support the project’s development. Your support helps cover hosting, domains, tools and new features.',
+      paypalTab: 'PayPal',
+      paypalDescription: 'Best for international support.',
+      paypalButton: 'Open PayPal',
+      miaTab: 'MIA QR',
+      miaDescription:
+        'A convenient way to support the project from Moldova. Scan the QR code in your banking app.',
     },
     sections: {
       why: {
@@ -424,6 +444,17 @@ export const translations: Record<Locale, Translation> = {
       primaryCta: 'Открыть Gathr',
       secondaryCta: 'Посмотреть сценарий',
       supportCta: 'Поддержать проект',
+    },
+    support: {
+      title: 'Поддержать Gathr',
+      description:
+        'Если тебе близка идея Gathr, ты можешь поддержать развитие проекта. Поддержка помогает оплачивать хостинг, домены, инструменты и новые функции.',
+      paypalTab: 'PayPal',
+      paypalDescription: 'Подходит для международной поддержки.',
+      paypalButton: 'Открыть PayPal',
+      miaTab: 'MIA QR',
+      miaDescription:
+        'Удобный способ поддержать проект из Молдовы. Отсканируйте QR-код в банковском приложении.',
     },
     sections: {
       why: {
@@ -676,6 +707,17 @@ export const translations: Record<Locale, Translation> = {
       primaryCta: 'Deschide Gathr',
       secondaryCta: 'Vezi fluxul',
       supportCta: 'Susține proiectul',
+    },
+    support: {
+      title: 'Susține Gathr',
+      description:
+        'Dacă îți place ideea Gathr, poți susține dezvoltarea proiectului. Susținerea ajută la acoperirea costurilor pentru hosting, domenii, instrumente și funcții noi.',
+      paypalTab: 'PayPal',
+      paypalDescription: 'Potrivit pentru susținere internațională.',
+      paypalButton: 'Deschide PayPal',
+      miaTab: 'MIA QR',
+      miaDescription:
+        'O metodă comodă de a susține proiectul din Moldova. Scanează codul QR în aplicația bancară.',
     },
     sections: {
       why: {

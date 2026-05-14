@@ -9,6 +9,7 @@ import {
 } from './translations'
 
 type ThemeMode = 'dark' | 'light'
+type SupportMethod = 'paypal' | 'mia'
 
 type MockEventCardProps = {
   title: string
@@ -355,6 +356,7 @@ function App() {
     return savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'dark'
   })
   const [locale, setLocale] = useState<Locale>(() => resolveInitialLocale())
+  const [supportMethod, setSupportMethod] = useState<SupportMethod>('paypal')
 
   useEffect(() => {
     localStorage.setItem('gathr-landing-theme', theme)
@@ -432,15 +434,64 @@ function App() {
 
                 <a
                   className="button button-support"
-                  href="https://paypal.me/DmitriiGrebeniuc"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#support"
                 >
                   <span className="button-support-icon" aria-hidden="true">
                     ♡
                   </span>
                   {t.hero.supportCta}
                 </a>
+              </div>
+
+              <div className="support-card" id="support">
+                <div className="support-card-copy">
+                  <h2>{t.support.title}</h2>
+                  <p>{t.support.description}</p>
+                </div>
+
+                <div className="support-tabs" role="tablist" aria-label={t.support.title}>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={supportMethod === 'paypal'}
+                    className={`support-tab ${supportMethod === 'paypal' ? 'is-active' : ''}`}
+                    onClick={() => setSupportMethod('paypal')}
+                  >
+                    {t.support.paypalTab}
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={supportMethod === 'mia'}
+                    className={`support-tab ${supportMethod === 'mia' ? 'is-active' : ''}`}
+                    onClick={() => setSupportMethod('mia')}
+                  >
+                    {t.support.miaTab}
+                  </button>
+                </div>
+
+                <div className="support-method-panel">
+                  {supportMethod === 'paypal' ? (
+                    <>
+                      <p>{t.support.paypalDescription}</p>
+                      <a
+                        className="button button-support-panel"
+                        href="https://paypal.me/DmitriiGrebeniuc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t.support.paypalButton}
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      <p>{t.support.miaDescription}</p>
+                      <div className="support-qr-frame">
+                        <img src="/mia-qr.jpg" alt={t.support.miaTab} />
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
 
