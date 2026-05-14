@@ -22,6 +22,7 @@ type Translation = {
     description: string
     primaryCta: string
     secondaryCta: string
+    supportCta: string
   }
   sections: {
     why: {
@@ -173,6 +174,7 @@ export const translations: Record<Locale, Translation> = {
         'Gathr helps people find local meetups, create their own events, invite others, and keep the important details out of chat chaos.',
       primaryCta: 'Open Gathr',
       secondaryCta: 'See the flow',
+      supportCta: 'Support the project',
     },
     sections: {
       why: {
@@ -421,6 +423,7 @@ export const translations: Record<Locale, Translation> = {
         'Gathr помогает находить локальные встречи, создавать свои события, приглашать людей и не терять важные детали в шуме чатов.',
       primaryCta: 'Открыть Gathr',
       secondaryCta: 'Посмотреть сценарий',
+      supportCta: 'Поддержать проект',
     },
     sections: {
       why: {
@@ -672,6 +675,7 @@ export const translations: Record<Locale, Translation> = {
         'Gathr te ajută să găsești întâlniri locale, să creezi evenimente, să inviți oameni și să nu pierzi detaliile importante în haosul chat-urilor.',
       primaryCta: 'Deschide Gathr',
       secondaryCta: 'Vezi fluxul',
+      supportCta: 'Susține proiectul',
     },
     sections: {
       why: {

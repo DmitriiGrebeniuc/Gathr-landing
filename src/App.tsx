@@ -429,6 +429,18 @@ function App() {
                 <a className="button button-secondary" href="#how-it-works">
                   {t.hero.secondaryCta}
                 </a>
+
+                <a
+                  className="button button-support"
+                  href="https://paypal.me/DmitriiGrebeniuc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="button-support-icon" aria-hidden="true">
+                    ♡
+                  </span>
+                  {t.hero.supportCta}
+                </a>
               </div>
             </div>
 
